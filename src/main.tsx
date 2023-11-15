@@ -4,6 +4,9 @@ import { createRoot } from 'react-dom/client'
 
 import 'preline'
 
+import './main.css'
+
+import Dashboard from './layouts/dashboard'
 import Overview from './pages/overview'
 
 createRoot(document.getElementById('root') as HTMLElement).render(
@@ -11,7 +14,9 @@ createRoot(document.getElementById('root') as HTMLElement).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Navigate to="/overview" />} />
-        <Route path="/overview" element={<Overview />} />
+        <Route element={<Dashboard />}>
+          <Route path="/overview" element={<Overview />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
