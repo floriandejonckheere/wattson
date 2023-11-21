@@ -14,11 +14,16 @@ import History from './pages/history'
 import Suggestions from './pages/suggestions'
 import Administration from './pages/administration'
 
+import Signin from './pages/auth/signin'
+
 createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Navigate to="/overview" />} />
+
+        <Route path="/signin" element={<Signin />} />
+
         <Route element={<Navigation />}>
           <Route element={<Dashboard />}>
             <Route path="/overview" element={<Overview />} />
