@@ -7,22 +7,6 @@ import {
   LightBulbIcon
 } from '@heroicons/react/24/solid'
 
-function Link({ children, ...props }): ReactElement {
-  /* eslint-disable  @typescript-eslint/no-explicit-any */
-  return (
-    <NavLink
-      {...props}
-      className={({ isActive }) =>
-        `w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-600 ${
-          isActive ? 'bg-sky-900' : 'hover:bg-sky-900 hover:text-white-300'
-        }`
-      }
-    >
-      {children}
-    </NavLink>
-  )
-}
-
 function Dashboard(): ReactElement {
   return (
     <div className="flex flex-row w-full h-full bg-gray-50 dark:bg-slate-900">
@@ -36,29 +20,65 @@ function Dashboard(): ReactElement {
         >
           <ul className="space-y-1.5">
             <li>
-              <Link to="/overview">
+              <NavLink
+                to="/overview"
+                className={({ isActive }) =>
+                  `w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-600 ${
+                    isActive
+                      ? 'bg-sky-900'
+                      : 'hover:bg-sky-900 hover:text-white-300'
+                  }`
+                }
+              >
                 <HomeIcon className="h-5 w-5" />
                 Overview
-              </Link>
+              </NavLink>
             </li>
 
             <li>
-              <Link to="/history">
+              <NavLink
+                to="/history"
+                className={({ isActive }) =>
+                  `w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-600 ${
+                    isActive
+                      ? 'bg-sky-900'
+                      : 'hover:bg-sky-900 hover:text-white-300'
+                  }`
+                }
+              >
                 <ChartBarIcon className="h-5 w-5" />
                 History
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/suggestions">
+              <NavLink
+                to="/suggestions"
+                className={({ isActive }) =>
+                  `w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-600 ${
+                    isActive
+                      ? 'bg-sky-900'
+                      : 'hover:bg-sky-900 hover:text-white-300'
+                  }`
+                }
+              >
                 <LightBulbIcon className="h-5 w-5" />
                 Suggestions
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/administration">
+              <NavLink
+                to="/administration"
+                className={({ isActive }) =>
+                  `w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-600 ${
+                    isActive
+                      ? 'bg-sky-900'
+                      : 'hover:bg-sky-900 hover:text-white-300'
+                  }`
+                }
+              >
                 <Cog6ToothIcon className="h-5 w-5" />
                 Administration
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>
