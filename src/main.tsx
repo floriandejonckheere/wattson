@@ -10,6 +10,9 @@ import Dashboard from './layouts/dashboard'
 import Navigation from './layouts/navigation'
 
 import Overview from './pages/overview'
+import History from './pages/history'
+import Suggestions from './pages/suggestions'
+import Administration from './pages/administration'
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
@@ -19,6 +22,9 @@ createRoot(document.getElementById('root') as HTMLElement).render(
         <Route element={<Navigation />}>
           <Route element={<Dashboard />}>
             <Route path="/overview" element={<Overview />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/suggestions" element={<Suggestions />} />
+            <Route path="/administration" element={<Administration />} />
           </Route>
         </Route>
       </Routes>
