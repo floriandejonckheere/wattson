@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 import { Outlet } from 'react-router-dom'
 import {
-  BoltIcon,
+  Cog6ToothIcon,
   HomeIcon,
   ChartBarIcon,
   LightBulbIcon
@@ -45,6 +45,15 @@ function Dashboard(): ReactElement {
               >
                 <LightBulbIcon className="h-5 w-5" />
                 Suggestions
+              </a>
+            </li>
+            <li>
+              <a
+                className="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg hover:bg-sky-900 hover:text-white-300 focus:outline-none focus:ring-1 focus:ring-gray-600"
+                href="#"
+              >
+                <Cog6ToothIcon className="h-5 w-5" />
+                Administration
               </a>
             </li>
           </ul>
