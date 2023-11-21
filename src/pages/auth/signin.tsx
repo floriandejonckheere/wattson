@@ -1,8 +1,21 @@
-import { ReactElement } from 'react'
-import { Link } from 'react-router-dom'
+import { ReactElement, useState } from 'react'
+
 import { BoltIcon } from '@heroicons/react/24/solid'
 
+import { signin } from '../../api/auth'
+import { useAuthStore } from '../../stores/auth'
+
 function Signin(): ReactElement {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const signinStore = useAuthStore((state) => state.signin)
+
+  const onSignin = (username: string, password: string) => {
+    signin(username, password).then((data) => {
+      signinStore(data.access_token)
+    })
+  }
+
   return (
     <main className="w-full max-w-md mx-auto p-6">
       <div className="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
@@ -32,6 +45,7 @@ function Signin(): ReactElement {
                       className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-sky-700 focus:ring-sky-700 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                       required
                       aria-describedby="email-error"
+                      onChange={(event) => setUsername(event.target.value)}
                     />
                     <div className="hidden absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3">
                       <svg
@@ -72,6 +86,7 @@ function Signin(): ReactElement {
                       className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-sky-700 focus:ring-sky-700 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                       required
                       aria-describedby="password-error"
+                      onChange={(event) => setPassword(event.target.value)}
                     />
                     <div className="hidden absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3">
                       <svg
@@ -97,6 +112,10 @@ function Signin(): ReactElement {
                 <button
                   type="submit"
                   className="w-full mt-4 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-sky-700 text-white hover:bg-sky-900 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                  onClick={(event) => {
+                    event.preventDefault()
+                    onSignin(username, password)
+                  }}
                 >
                   Sign in
                 </button>

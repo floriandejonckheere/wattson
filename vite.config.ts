@@ -9,7 +9,7 @@ export default defineConfig({
       '/api': {
         target: 'http://193.166.139.12',
         changeOrigin: true,
-        secure: false,
+        secure: false
       }
     }
   }
