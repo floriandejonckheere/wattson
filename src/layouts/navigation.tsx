@@ -10,7 +10,7 @@ function Navigation(): ReactElement {
       <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 bg-white text-sm border-b border-gray-200 dark:bg-gray-800">
         <nav className="w-full px-16 py-4 sm:flex sm:items-center sm:justify-between" aria-label="Global">
           <div className="flex items-center justify-between">
-            <a className="inline-flex items-center gap-x-6 text-2xl font-bold dark:text-white" href="#">
+            <a className="inline-flex items-center gap-x-6 text-3xl font-bold dark:text-white" href="#">
                 <BoltIcon className="h-12 w-12 p-2.5 bg-sky-700 text-white rounded-full" />
                 Wattson
             </a>
