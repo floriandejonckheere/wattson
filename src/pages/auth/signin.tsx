@@ -48,7 +48,8 @@ export default function Signin(): ReactElement {
           </div>
 
           <div className="mt-5">
-            <form>
+            {/* @ts-expect-error - mutation is not a real form handler */}
+            <form onSubmit={mutation.mutate}>
               <div className="grid gap-y-4">
                 {mutation.isError && (
                   <p className="text-sm text-red-600 font-bold">
@@ -93,7 +94,6 @@ export default function Signin(): ReactElement {
                 <button
                   type="submit"
                   className="w-full mt-4 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-sky-700 text-white hover:bg-sky-900 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                  onClick={mutation.mutate}
                   disabled={mutation.isPending}
                 >
                   {mutation.isPending ? <Spinner /> : 'Sign in'}

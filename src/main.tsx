@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+// @ts-expect-error - including @types/react-dom gives a lot of errors
 import { createRoot } from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useLocalStorage } from '@uidotdev/usehooks'
