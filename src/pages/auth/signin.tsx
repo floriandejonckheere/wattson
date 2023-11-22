@@ -1,7 +1,10 @@
 import { ReactElement, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
 
 import { BoltIcon } from '@heroicons/react/24/solid'
+
+import Spinner from '../../components/spinner'
 
 import { signin } from '../../api/auth'
 
@@ -32,18 +35,25 @@ export default function Signin(): ReactElement {
               <BoltIcon className="h-10 w-10 p-2.5 bg-sky-700 text-white rounded-full" />
               Wattson
             </div>
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              Don't have an account yet?
+              <Link
+                to="/signup"
+                className="ml-1 text-sky-700 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+              >
+                Sign up here
+              </Link>
+            </p>
           </div>
 
           <div className="mt-5">
             <form>
               <div className="grid gap-y-4">
-                <p
-                  className={`${
-                    mutation.isError ? 'pending' : ''
-                  } text-sm text-red-600 font-bold`}
-                >
-                  {mutation.isError && mutation.error.message}
-                </p>
+                {mutation.isError && (
+                  <p className="text-sm text-red-600 font-bold">
+                    An error occurred: {mutation.error.message}
+                  </p>
+                )}
 
                 <div>
                   <label
@@ -58,7 +68,6 @@ export default function Signin(): ReactElement {
                     name="username"
                     className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-sky-700 focus:ring-sky-700 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                     required
-                    aria-describedby="email-error"
                     onChange={(event) => setUsername(event.target.value)}
                   />
                 </div>
@@ -86,30 +95,7 @@ export default function Signin(): ReactElement {
                   onClick={mutation.mutate}
                   disabled={mutation.isPending}
                 >
-                  {mutation.isPending ? (
-                    <svg
-                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        stroke-width="4"
-                      ></circle>
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
-                    </svg>
-                  ) : (
-                    'Sign in'
-                  )}
+                  {mutation.isPending ? <Spinner /> : 'Sign in'}
                 </button>
               </div>
             </form>
