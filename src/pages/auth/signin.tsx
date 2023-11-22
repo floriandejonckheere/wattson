@@ -13,6 +13,13 @@ function Signin(): ReactElement {
     mutationFn: (event: Event) => {
       event.preventDefault()
       return signin(username, password)
+    },
+    onSuccess: (data) => {
+      localStorage.setItem('token', data.access_token)
+      window.location.href = '/overview'
+    },
+    onError: () => {
+      localStorage.removeItem('token')
     }
   })
 

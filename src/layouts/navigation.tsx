@@ -1,8 +1,17 @@
 import { ReactElement } from 'react'
 import { Link, Outlet } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+
 import { BoltIcon } from '@heroicons/react/24/solid'
 
+import { me } from '../api/users'
+
 function Navigation(): ReactElement {
+  const { isPending, isError, data } = useQuery({
+    queryKey: ['me'],
+    queryFn: me
+  })
+
   return (
     <div className="flex flex-col w-full h-full">
       <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 bg-white text-sm border-b border-gray-200 dark:bg-gray-800">
@@ -29,11 +38,15 @@ function Navigation(): ReactElement {
                 href="#"
               >
                 <span className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-gray-800 font-semibold text-white leading-none dark:bg-white dark:text-gray-800">
-                  JD
+                  {!isPending &&
+                    !isError &&
+                    data.username.charAt(0).toUpperCase()}
                 </span>
                 <div className="flex flex-col">
-                  <span>John Doe</span>
-                  <span className="text-gray-400">john.doe@example.com</span>
+                  <span>{!isPending && !isError && data.username}</span>
+                  <span className="text-gray-400">
+                    {!isPending && !isError && data.email}
+                  </span>
                 </div>
               </a>
             </div>

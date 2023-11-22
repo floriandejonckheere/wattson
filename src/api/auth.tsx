@@ -1,4 +1,4 @@
-export async function signin(username, password) {
+export async function signin(username: string, password: string) {
   const response = await fetch(`/api/users/token`, {
     method: 'POST',
     headers: {
