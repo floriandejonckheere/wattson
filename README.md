@@ -1,5 +1,7 @@
 # Wattson
 
+![Continuous Integration](https://github.com/floriandejonckheere/wattson/workflows/Continuous%20Integration/badge.svg)
+
 Smart energy assistant.
 
 ## Usage
