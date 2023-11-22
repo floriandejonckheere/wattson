@@ -2,8 +2,13 @@ import React from 'react'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 // @ts-expect-error - including @types/react-dom gives a lot of errors
 import { createRoot } from 'react-dom/client'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import {
+  QueryClient,
+  QueryClientProvider,
+  QueryCache
+} from '@tanstack/react-query'
 import { useLocalStorage } from '@uidotdev/usehooks'
+import { AxiosError } from 'axios'
 
 import 'preline'
 
@@ -29,7 +34,17 @@ const queryClient = new QueryClient({
       refetchOnMount: false,
       retry: false
     }
-  }
+  },
+  queryCache: new QueryCache({
+    // @ts-expect-error - axios error type is not compatible with react-query
+    onError: (error: AxiosError) => {
+      const [, setToken] = useLocalStorage('token', null)
+
+      if (error.response?.status === 401) {
+        setToken(null)
+      }
+    }
+  })
 })
 
 const App = () => {
