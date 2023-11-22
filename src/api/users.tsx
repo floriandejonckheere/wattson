@@ -1,24 +1,21 @@
-export async function me() {
+import axios, { AxiosError } from 'axios'
+
+export function me() {
   const token = localStorage.getItem('token')
 
   if (!token) {
-    throw new Error('Token not found')
+    throw new AxiosError('Unauthorized')
   }
 
-  const response = await fetch(`/api/users/me/`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      Accept: 'application/json',
-      Authorization: `Bearer ${JSON.parse(token)}`
-    }
-  })
-
-  const body = await response.json()
-
-  if (!response.ok) {
-    throw new Error(body.detail)
-  }
-
-  return body
+  return axios
+    .get(`/api/users/me/`, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+        Authorization: `Bearer ${JSON.parse(token)}`
+      }
+    })
+    .then((response) => {
+      return response.data
+    })
 }
