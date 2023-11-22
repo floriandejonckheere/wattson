@@ -1,6 +1,7 @@
 import { ReactElement } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
+import { useLocalStorage } from '@uidotdev/usehooks'
 
 import { BoltIcon } from '@heroicons/react/24/solid'
 
@@ -11,6 +12,8 @@ export default function Navigation(): ReactElement {
     queryKey: ['me'],
     queryFn: me
   })
+
+  const [, setToken] = useLocalStorage('token', null)
 
   return (
     <div className="flex flex-col w-full h-full">
@@ -48,6 +51,9 @@ export default function Navigation(): ReactElement {
                     {!isPending && !isError && data.email}
                   </span>
                 </div>
+              </a>
+              <a className="flex items-center gap-x-2 font-medium text-gray-500 hover:text-sky-700 sm:border-s sm:border-gray-300 sm:my-6 sm:ps-6 dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500" href="#" onClick={() => { setToken(null) }}>
+                Sign out
               </a>
             </div>
           </div>
