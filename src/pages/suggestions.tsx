@@ -1,5 +1,5 @@
 import { ReactElement } from 'react'
 
 export default function Suggestions(): ReactElement {
-  return <b>Suggestions</b>
+  return <h2 className="text-xl font-bold">Suggestions</h2>
 }

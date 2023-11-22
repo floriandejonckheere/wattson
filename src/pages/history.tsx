@@ -1,5 +1,5 @@
 import { ReactElement } from 'react'
 
 export default function History(): ReactElement {
-  return <b>History</b>
+  return <h2 className="text-xl font-bold">History</h2>
 }

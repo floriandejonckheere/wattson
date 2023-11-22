@@ -1,5 +1,5 @@
 import { ReactElement } from 'react'
 
 export default function Overview(): ReactElement {
-  return <b>Overview</b>
+  return <h2 className="text-xl font-bold">Overview</h2>
 }
