@@ -6,7 +6,7 @@ import { BoltIcon } from '@heroicons/react/24/solid'
 
 import { me } from '../api/users'
 
-function Navigation(): ReactElement {
+export default function Navigation(): ReactElement {
   const { isPending, isError, data } = useQuery({
     queryKey: ['me'],
     queryFn: me
@@ -58,5 +58,3 @@ function Navigation(): ReactElement {
     </div>
   )
 }
-
-export default Navigation

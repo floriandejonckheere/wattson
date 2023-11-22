@@ -16,6 +16,7 @@ import Suggestions from './pages/suggestions'
 import Administration from './pages/administration'
 
 import Signin from './pages/auth/signin'
+import Signup from './pages/auth/signup'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -35,6 +36,7 @@ createRoot(document.getElementById('root') as HTMLElement).render(
           <Route path="/" element={<Navigate to="/overview" />} />
 
           <Route path="/signin" element={<Signin />} />
+          <Route path="/signup" element={<Signup />} />
 
           <Route element={<Navigation />}>
             <Route element={<Dashboard />}>
