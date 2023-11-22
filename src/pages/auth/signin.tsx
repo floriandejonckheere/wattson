@@ -5,7 +5,7 @@ import { BoltIcon } from '@heroicons/react/24/solid'
 
 import { signin } from '../../api/auth'
 
-function Signin(): ReactElement {
+export default function Signin(): ReactElement {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -119,5 +119,3 @@ function Signin(): ReactElement {
     </main>
   )
 }
-
-export default Signin

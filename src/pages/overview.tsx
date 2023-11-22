@@ -1,7 +1,5 @@
 import { ReactElement } from 'react'
 
-function Overview(): ReactElement {
+export default function Overview(): ReactElement {
   return <b>Overview</b>
 }
-
-export default Overview

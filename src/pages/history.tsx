@@ -1,7 +1,5 @@
 import { ReactElement } from 'react'
 
-function History(): ReactElement {
+export default function History(): ReactElement {
   return <b>History</b>
 }
-
-export default History
