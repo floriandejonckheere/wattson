@@ -1,7 +1,7 @@
 export async function me() {
   const token = localStorage.getItem('token')
 
-  if(!token) {
+  if (!token) {
     throw new Error('Token not found')
   }
 
