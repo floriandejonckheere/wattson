@@ -17,6 +17,23 @@ export default function Dashboard(): ReactElement {
     queryFn: me
   })
 
+  const hour = new Date().getHours()
+
+  let moment
+  switch (true) {
+    case hour < 6:
+      moment = 'night'
+      break
+    case hour < 12:
+      moment = 'morning'
+      break
+    case hour < 18:
+      moment = 'afternoon'
+      break
+    case hour < 24:
+      moment = 'evening'
+  }
+
   return (
     <div className="flex flex-row w-full h-full bg-gray-50 dark:bg-slate-900">
       <div
@@ -96,6 +113,10 @@ export default function Dashboard(): ReactElement {
       </div>
 
       <div className="p-5">
+        <h1 className="text-3xl font-bold mb-10">
+          Good {moment}, {!isPending && !isError && data.username}!
+        </h1>
+
         <Outlet />
       </div>
     </div>
