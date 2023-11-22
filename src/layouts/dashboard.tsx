@@ -74,25 +74,23 @@ export default function Dashboard(): ReactElement {
                 Suggestions
               </NavLink>
             </li>
-            {!isPending &&
-              !isError &&
-              data.is_admin && (
-                <li>
-                  <NavLink
-                    to="/administration"
-                    className={({ isActive }) =>
-                      `w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-600 ${
-                        isActive
-                          ? 'bg-sky-900'
-                          : 'hover:bg-sky-900 hover:text-white-300'
-                      }`
-                    }
-                  >
-                    <Cog6ToothIcon className="h-5 w-5" />
-                    Administration
-                  </NavLink>
-                </li>
-              )}
+            {!isPending && !isError && data.is_admin && (
+              <li>
+                <NavLink
+                  to="/administration"
+                  className={({ isActive }) =>
+                    `w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-600 ${
+                      isActive
+                        ? 'bg-sky-900'
+                        : 'hover:bg-sky-900 hover:text-white-300'
+                    }`
+                  }
+                >
+                  <Cog6ToothIcon className="h-5 w-5" />
+                  Administration
+                </NavLink>
+              </li>
+            )}
           </ul>
         </nav>
       </div>

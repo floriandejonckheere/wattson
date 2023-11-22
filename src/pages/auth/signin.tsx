@@ -1,6 +1,7 @@
 import { ReactElement, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
+import { useLocalStorage } from '@uidotdev/usehooks'
 
 import { BoltIcon } from '@heroicons/react/24/solid'
 
@@ -11,6 +12,7 @@ import { signin } from '../../api/auth'
 export default function Signin(): ReactElement {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [setToken] = useLocalStorage('token', null)
 
   const mutation = useMutation({
     mutationFn: (event: Event) => {
@@ -18,11 +20,10 @@ export default function Signin(): ReactElement {
       return signin(username, password)
     },
     onSuccess: (data) => {
-      localStorage.setItem('token', data.access_token)
-      window.location.href = '/overview'
+      setToken(data.access_token)
     },
     onError: () => {
-      localStorage.removeItem('token')
+      setToken(null)
     }
   })
 

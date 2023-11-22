@@ -2,10 +2,13 @@ import React from 'react'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { useLocalStorage } from '@uidotdev/usehooks'
 
 import 'preline'
 
 import './main.css'
+
+import Authentication from './authentication'
 
 import Dashboard from './layouts/dashboard'
 import Navigation from './layouts/navigation'
@@ -23,31 +26,43 @@ const queryClient = new QueryClient({
     queries: {
       refetchOnWindowFocus: false,
       refetchOnMount: false,
-      retry: 1
+      retry: false
     }
   }
 })
 
-createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Navigate to="/overview" />} />
+const App = () => {
+  const [token] = useLocalStorage('token', null)
 
-          <Route path="/signin" element={<Signin />} />
-          <Route path="/signup" element={<Signup />} />
+  return (
+    <React.StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Navigate to="/overview" />} />
 
-          <Route element={<Navigation />}>
-            <Route element={<Dashboard />}>
-              <Route path="/overview" element={<Overview />} />
-              <Route path="/history" element={<History />} />
-              <Route path="/suggestions" element={<Suggestions />} />
-              <Route path="/administration" element={<Administration />} />
+            <Route
+              element={<Authentication render={!token} path="/overview" />}
+            >
+              <Route path="/signin" element={<Signin />} />
+              <Route path="/signup" element={<Signup />} />
             </Route>
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </QueryClientProvider>
-  </React.StrictMode>
-)
+
+            <Route element={<Authentication render={!!token} path="/signin" />}>
+              <Route element={<Navigation />}>
+                <Route element={<Dashboard />}>
+                  <Route path="/overview" element={<Overview />} />
+                  <Route path="/history" element={<History />} />
+                  <Route path="/suggestions" element={<Suggestions />} />
+                  <Route path="/administration" element={<Administration />} />
+                </Route>
+              </Route>
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </React.StrictMode>
+  )
+}
+
+createRoot(document.getElementById('root') as HTMLElement).render(<App />)
