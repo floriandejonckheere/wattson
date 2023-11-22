@@ -18,10 +18,7 @@ export default function Navigation(): ReactElement {
   return (
     <div className="flex flex-col w-full h-full">
       <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 bg-white text-sm border-b border-gray-200 dark:bg-gray-800">
-        <nav
-          className="w-full px-16 py-4 sm:flex sm:items-center sm:justify-between"
-          aria-label="Global"
-        >
+        <nav className="w-full px-16 py-4 sm:flex sm:items-center sm:justify-between">
           <div className="flex items-center justify-between">
             <Link
               to="/"
