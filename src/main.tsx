@@ -23,6 +23,7 @@ import Overview from './pages/overview'
 import History from './pages/history'
 import Suggestions from './pages/suggestions'
 import Administration from './pages/administration'
+import Settings from './pages/settings'
 
 import Signin from './pages/auth/signin'
 import Signup from './pages/auth/signup'
@@ -70,6 +71,7 @@ const App = () => {
                   <Route path="/history" element={<History />} />
                   <Route path="/suggestions" element={<Suggestions />} />
                   <Route path="/administration" element={<Administration />} />
+                  <Route path="/settings" element={<Settings />} />
                 </Route>
               </Route>
             </Route>
