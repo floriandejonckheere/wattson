@@ -1,5 +1,5 @@
 export async function signin(username, password) {
-  return fetch(`/api/users/token`, {
+  const response = await fetch(`/api/users/token`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -13,8 +13,13 @@ export async function signin(username, password) {
       client_id: '',
       client_secret: ''
     })
-  }).then(
-    (data) => data.json(),
-    (error) => console.error(error)
-  )
+  })
+
+  const body = await response.json()
+
+  if (!response.ok) {
+    throw new Error(body.detail)
+  }
+
+  return body
 }

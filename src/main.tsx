@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import 'preline'
 
@@ -16,23 +17,35 @@ import Administration from './pages/administration'
 
 import Signin from './pages/auth/signin'
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      retry: 1
+    }
+  }
+})
+
 createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Navigate to="/overview" />} />
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate to="/overview" />} />
 
-        <Route path="/signin" element={<Signin />} />
+          <Route path="/signin" element={<Signin />} />
 
-        <Route element={<Navigation />}>
-          <Route element={<Dashboard />}>
-            <Route path="/overview" element={<Overview />} />
-            <Route path="/history" element={<History />} />
-            <Route path="/suggestions" element={<Suggestions />} />
-            <Route path="/administration" element={<Administration />} />
+          <Route element={<Navigation />}>
+            <Route element={<Dashboard />}>
+              <Route path="/overview" element={<Overview />} />
+              <Route path="/history" element={<History />} />
+              <Route path="/suggestions" element={<Suggestions />} />
+              <Route path="/administration" element={<Administration />} />
+            </Route>
           </Route>
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
   </React.StrictMode>
 )
