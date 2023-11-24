@@ -49,3 +49,23 @@ export function changePassword(
       return response.data
     })
 }
+
+export function deleteAccount(username: string) {
+  const token = localStorage.getItem('token')
+
+  if (!token) {
+    throw new AxiosError('Unauthorized')
+  }
+
+  return axios
+    .delete(`/api/users/delete/${username}`, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+        Authorization: `Bearer ${JSON.parse(token)}`
+      }
+    })
+    .then((response) => {
+      return response.data
+    })
+}
