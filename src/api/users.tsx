@@ -8,7 +8,7 @@ export function me() {
   }
 
   return axios
-    .get(`/api/users/me/`, {
+    .get(`/api/users/me`, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         Accept: 'application/json',
