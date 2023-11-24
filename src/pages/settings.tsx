@@ -39,8 +39,8 @@ export default function Settings(): ReactElement {
     <>
       <h2 className="text-xl font-bold">Settings</h2>
 
-      <div className="flex items-start mt-8 gap-16">
-        <div className="w-96 bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-8 gap-16">
+        <div className="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
           <div className="mb-8">
             <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">
               Password
@@ -109,7 +109,7 @@ export default function Settings(): ReactElement {
           </form>
         </div>
 
-        <div className="w-96 bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
+        <div className="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
           <div>
             <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">
               Delete
