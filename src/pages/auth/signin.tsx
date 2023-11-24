@@ -2,6 +2,7 @@ import { ReactElement, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
 import { useLocalStorage } from '@uidotdev/usehooks'
+import axios from 'axios'
 
 import { BoltIcon } from '@heroicons/react/24/solid'
 
@@ -53,7 +54,10 @@ export default function Signin(): ReactElement {
               <div className="grid gap-y-4">
                 {mutation.isError && (
                   <p className="text-sm text-red-600 font-bold">
-                    An error occurred: {mutation.error.message}
+                    Error:{' '}
+                    {axios.isAxiosError(mutation.error)
+                      ? mutation.error.response?.data.detail
+                      : mutation.error.message}
                   </p>
                 )}
 

@@ -2,6 +2,7 @@ import { ReactElement, useState } from 'react'
 import Spinner from '../components/spinner'
 import { useQuery, useMutation } from '@tanstack/react-query'
 import { useLocalStorage } from '@uidotdev/usehooks'
+import axios from 'axios'
 
 import { changePassword, deleteAccount, me } from '../api/users'
 
@@ -54,7 +55,10 @@ export default function Settings(): ReactElement {
             <div className="grid gap-y-4">
               {updatePasswordMutation.isError && (
                 <p className="text-sm text-red-600 font-bold">
-                  An error occurred: {updatePasswordMutation.error.message}
+                  Error:{' '}
+                  {axios.isAxiosError(updatePasswordMutation.error)
+                    ? updatePasswordMutation.error.response?.data.detail
+                    : updatePasswordMutation.error.message}
                 </p>
               )}
 
@@ -124,7 +128,10 @@ export default function Settings(): ReactElement {
             <div className="grid gap-y-4">
               {deleteAccountMutation.isError && (
                 <p className="text-sm text-red-600 font-bold">
-                  An error occurred: {deleteAccountMutation.error.message}
+                  Error:{' '}
+                  {axios.isAxiosError(deleteAccountMutation.error)
+                    ? deleteAccountMutation.error.response?.data.detail
+                    : deleteAccountMutation.error.message}
                 </p>
               )}
 
