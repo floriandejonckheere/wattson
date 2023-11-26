@@ -53,8 +53,10 @@ function WeatherDetail(props: {
       </div>
 
       <TemperatureChart
-        categories={['00:00', '03:00', '06:00', '09:00', '12:00', '15:00']}
-        data={[19, 18, 18, 17, 19, 18]}
+        categories={new Array(24)
+          .fill('')
+          .map((_, i) => `${i}:00`.padStart(5, '0'))}
+        data={forecast.temperature.values}
       />
     </>
   )
@@ -79,7 +81,8 @@ export default function Weather(): ReactElement {
       temperature: {
         minimum: 17.3,
         maximum: 21.2,
-        average: 19.6
+        average: 19.6,
+        values: []
       },
       cloudCover: 90,
       windSpeed: 2.3
@@ -90,7 +93,8 @@ export default function Weather(): ReactElement {
       temperature: {
         minimum: 17.3,
         maximum: 21.2,
-        average: 19.6
+        average: 19.6,
+        values: []
       },
       cloudCover: 90,
       windSpeed: 2.3
@@ -101,7 +105,8 @@ export default function Weather(): ReactElement {
       temperature: {
         minimum: 17.3,
         maximum: 21.2,
-        average: 19.6
+        average: 19.6,
+        values: []
       },
       cloudCover: 90,
       windSpeed: 2.3
@@ -112,7 +117,8 @@ export default function Weather(): ReactElement {
       temperature: {
         minimum: 17.3,
         maximum: 21.2,
-        average: 19.6
+        average: 19.6,
+        values: []
       },
       cloudCover: 90,
       windSpeed: 2.3
@@ -123,7 +129,8 @@ export default function Weather(): ReactElement {
       temperature: {
         minimum: 17.3,
         maximum: 21.2,
-        average: 19.6
+        average: 19.6,
+        values: []
       },
       cloudCover: 90,
       windSpeed: 2.3
@@ -134,7 +141,8 @@ export default function Weather(): ReactElement {
       temperature: {
         minimum: 17.3,
         maximum: 21.2,
-        average: 19.6
+        average: 19.6,
+        values: []
       },
       cloudCover: 90,
       windSpeed: 2.3
@@ -145,7 +153,8 @@ export default function Weather(): ReactElement {
       temperature: {
         minimum: 17.3,
         maximum: 21.2,
-        average: 19.6
+        average: 19.6,
+        values: []
       },
       cloudCover: 90,
       windSpeed: 2.3

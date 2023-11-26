@@ -11,6 +11,7 @@ export interface Forecast {
     minimum: number
     maximum: number
     average: number
+    values: number[]
   }
   cloudCover: number
   windSpeed: number
