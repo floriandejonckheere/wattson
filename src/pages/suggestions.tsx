@@ -1,4 +1,9 @@
 import { ReactElement, useState } from 'react'
+import moment from 'moment'
+
+import { SunIcon } from '@heroicons/react/24/outline'
+
+import TemperatureChart from '../components/charts/temperature'
 
 export default function Suggestions(): ReactElement {
   const [activeTab, setActiveTab] = useState('today')
@@ -41,9 +46,67 @@ export default function Suggestions(): ReactElement {
             </div>
           </div>
 
-          {activeTab == 'today' && <div>Today</div>}
+          {activeTab == 'today' && (
+            <>
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="flex gap-2 items-center">
+                    <SunIcon className="inline-block w-8 h-8" />
 
-          {activeTab == 'tomorrow' && <div>Tomorrow</div>}
+                    <div>
+                      <h5 className="text-sm text-gray-500 font-semibold">
+                        {moment().format('MMM DD')}
+                      </h5>
+                      <p className="mt-1 text-3xl font-bold">
+                        19 <span className="text-xl">&deg;C</span>
+                      </p>
+                      <p className="mt-1 text-xs text-gray-500">
+                        Min: 17.3 &deg;C Max: 21 &deg;C
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="text-sm text-gray-700">
+                  <p>Cloud cover: 90%</p>
+                  <p>Wind speed: 2.3 m/s</p>
+                  <p>Radiation: 37 W/m&sup2;</p>
+                </div>
+              </div>
+
+              <TemperatureChart />
+            </>
+          )}
+
+          {activeTab == 'tomorrow' && (
+            <>
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="flex gap-2 items-center">
+                    <SunIcon className="inline-block w-8 h-8" />
+
+                    <div>
+                      <h5 className="text-sm text-gray-500 font-semibold">
+                        {moment().add(1, 'day').format('MMM DD')}
+                      </h5>
+                      <p className="mt-1 text-3xl font-bold">
+                        19 <span className="text-xl">&deg;C</span>
+                      </p>
+                      <p className="mt-1 text-xs text-gray-500">
+                        Min: 17.3 &deg;C Max: 21 &deg;C
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="text-sm text-gray-700">
+                  <p>Cloud cover: 90%</p>
+                  <p>Wind speed: 2.3 m/s</p>
+                  <p>Radiation: 37 W/m&sup2;</p>
+                </div>
+              </div>
+
+              <TemperatureChart />
+            </>
+          )}
 
           {activeTab == 'this week' && <div>This week</div>}
         </div>
