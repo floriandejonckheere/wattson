@@ -103,7 +103,11 @@ export default function Settings(): ReactElement {
                 className="w-full mt-4 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-sky-700 text-white hover:bg-sky-900 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 disabled={updatePasswordMutation.isPending}
               >
-                {updatePasswordMutation.isPending ? <Spinner /> : 'Update'}
+                {updatePasswordMutation.isPending ? (
+                  <Spinner color="text-white" />
+                ) : (
+                  'Update'
+                )}
               </button>
             </div>
           </form>
@@ -143,7 +147,7 @@ export default function Settings(): ReactElement {
                 }
               >
                 {deleteAccountMutation.isPending || isPending || isError ? (
-                  <Spinner />
+                  <Spinner color="text-white" />
                 ) : (
                   'Delete account'
                 )}
