@@ -68,6 +68,10 @@ export default function Weather(): ReactElement {
     new Date(),
     activeLocation
   )
+  const { isSuccess: tomorrowIsSuccess, forecast: tomorrow } = useWeather(
+    moment(new Date()).add(1, 'day').toDate(),
+    activeLocation
+  )
 
   const forecasts: Forecast[] = [
     {
@@ -225,7 +229,7 @@ export default function Weather(): ReactElement {
       )}
 
       {activeTab == 'tomorrow' && (
-        <WeatherDetail success={todayIsSuccess} forecast={forecasts[1]} />
+        <WeatherDetail success={tomorrowIsSuccess} forecast={tomorrow} />
       )}
 
       {activeTab == 'this week' && (
