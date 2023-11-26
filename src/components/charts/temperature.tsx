@@ -34,11 +34,12 @@ export default function Temperature(props: TemperatureProps): ReactElement {
       }
     },
     xaxis: {
-      categories: props.categories
+      categories: props.categories,
+      tickAmount: 6
     },
     yaxis: {
       labels: {
-        formatter: (value) => `${value}°C`
+        formatter: (value) => `${Math.round(value)}°C`
       }
     },
     series: [

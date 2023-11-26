@@ -6,8 +6,10 @@ import { predictions } from '../predictions'
 import { Location, Forecast } from '../../types'
 
 export const useWeather = (date: Date, location: Location) => {
-  const startTime = moment(date).startOf('day').format()
-  const endTime = moment(date).endOf('day').format()
+  const start = moment(date).utc().startOf('day')
+
+  const startTime = start.format()
+  const endTime = start.add(23, 'hours').format()
 
   const temperature = `Temperature_${location.latitude},${location.longitude}`
   const cloudCover = `Cloud_Cover_${location.latitude},${location.longitude}`
@@ -45,7 +47,8 @@ export const useWeather = (date: Date, location: Location) => {
         temperature: {
           minimum: 0,
           maximum: 0,
-          average: 0
+          average: 0,
+          values: []
         },
         cloudCover: 0,
         windSpeed: 0
@@ -57,12 +60,13 @@ export const useWeather = (date: Date, location: Location) => {
     date,
     forecast: 'sunny',
     temperature: {
-      minimum: Math.min(...data[temperature].value),
-      maximum: Math.max(...data[temperature].value),
-      average: Math.avg(data[temperature].value)
+      minimum: Math.min(...data[temperature].value.slice(0, 24)), // FIXME: API returns 48 values
+      maximum: Math.max(...data[temperature].value.slice(0, 24)), // FIXME: API returns 48 values
+      average: Math.avg(data[temperature].value.slice(0, 24)), // FIXME: API returns 48 values
+      values: data[temperature].value.slice(0, 24) // FIXME: API returns 48 values
     },
-    cloudCover: Math.avg(data[cloudCover].value),
-    windSpeed: Math.avg(data[windSpeed].value)
+    cloudCover: Math.avg(data[cloudCover].value.slice(0, 24)), // FIXME: API returns 48 values
+    windSpeed: Math.avg(data[windSpeed].value.slice(0, 24)) // FIXME: API returns 48 values
   }
 
   return {
