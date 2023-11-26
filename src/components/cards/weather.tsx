@@ -7,6 +7,8 @@ import {
   ChevronDownIcon
 } from '@heroicons/react/24/outline'
 
+import Spinner from '../spinner'
+
 import TemperatureChart from '../charts/temperature'
 
 import { useWeather } from '../../api/queries/weather'
@@ -21,7 +23,11 @@ function WeatherDetail(props: {
   const { success, forecast } = props
 
   if (!success) {
-    return <p>Loading</p>
+    return (
+      <div className="flex justify-center items-center h-48">
+        <Spinner size="8" />
+      </div>
+    )
   }
 
   return (
