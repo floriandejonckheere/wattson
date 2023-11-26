@@ -12,6 +12,8 @@ import { AxiosError } from 'axios'
 
 import 'preline'
 
+import './math'
+
 import './main.css'
 
 import Authentication from './authentication'
