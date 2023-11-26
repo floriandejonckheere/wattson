@@ -9,23 +9,20 @@ import {
 
 import TemperatureChart from '../charts/temperature'
 
-import { Locations } from '../../api/data'
+import { useWeather } from '../../api/queries/weather'
+import { LOCATIONS } from '../../api/data'
 
-interface Forecast {
-  date: Date
-  forecast: string
-  temperature: {
-    minimum: number
-    maximum: number
-    average: number
+import { Forecast } from '../../types'
+
+function WeatherDetail(props: {
+  success: boolean
+  forecast: Forecast
+}): ReactElement {
+  const { success, forecast } = props
+
+  if (!success) {
+    return <p>Loading</p>
   }
-  cloudCover: number
-  windSpeed: number
-  radiation: number
-}
-
-function WeatherDetail(props: { forecast: Forecast }): ReactElement {
-  const { forecast } = props
 
   return (
     <>
@@ -65,7 +62,12 @@ function WeatherDetail(props: { forecast: Forecast }): ReactElement {
 }
 export default function Weather(): ReactElement {
   const [activeTab, setActiveTab] = useState('today')
-  const [activeLocation, setActiveLocation] = useState(Locations.ruissalo)
+  const [activeLocation, setActiveLocation] = useState(LOCATIONS.ruissalo)
+
+  const { isSuccess: todayIsSuccess, forecast: today } = useWeather(
+    new Date(),
+    activeLocation
+  )
 
   const forecasts: Forecast[] = [
     {
@@ -173,10 +175,11 @@ export default function Weather(): ReactElement {
                 className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
                 aria-labelledby="hs-dropdown-default"
               >
-                {Object.values(Locations).map((location) => (
+                {Object.values(LOCATIONS).map((location) => (
                   <a
+                    key={location.name}
                     className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={() => setActiveLocation(location)}
                   >
                     {location.name}
@@ -217,9 +220,13 @@ export default function Weather(): ReactElement {
         </div>
       </div>
 
-      {activeTab == 'today' && <WeatherDetail forecast={forecasts[0]} />}
+      {activeTab == 'today' && (
+        <WeatherDetail success={todayIsSuccess} forecast={today} />
+      )}
 
-      {activeTab == 'tomorrow' && <WeatherDetail forecast={forecasts[1]} />}
+      {activeTab == 'tomorrow' && (
+        <WeatherDetail success={todayIsSuccess} forecast={forecasts[1]} />
+      )}
 
       {activeTab == 'this week' && (
         <>
