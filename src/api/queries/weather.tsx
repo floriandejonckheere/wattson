@@ -11,6 +11,7 @@ export const useWeather = (date: Date, location: Location) => {
 
   const temperature = `Temperature_${location.latitude},${location.longitude}`
   const cloudCover = `Cloud_Cover_${location.latitude},${location.longitude}`
+  const windSpeed = `Wind_Speed_${location.latitude},${location.longitude}`
 
   const { isSuccess, data } = useQueries({
     queries: [
@@ -21,6 +22,10 @@ export const useWeather = (date: Date, location: Location) => {
       {
         queryKey: ['predictions', cloudCover, startTime, endTime],
         queryFn: () => predictions(cloudCover, startTime, endTime)
+      },
+      {
+        queryKey: ['predictions', windSpeed, startTime, endTime],
+        queryFn: () => predictions(windSpeed, startTime, endTime)
       }
     ],
     combine: (results) => {
@@ -31,22 +36,40 @@ export const useWeather = (date: Date, location: Location) => {
     }
   })
 
+  if (!isSuccess) {
+    return {
+      isSuccess,
+      forecast: {
+        date,
+        forecast: 'sunny',
+        temperature: {
+          minimum: 0,
+          maximum: 0,
+          average: 0
+        },
+        cloudCover: 0,
+        windSpeed: 0,
+        radiation: 0
+      }
+    }
+  }
+
   const forecast: Forecast = {
     date,
     forecast: 'sunny',
     temperature: {
-      minimum: isSuccess ? Math.min(...data[temperature].value) : 0,
-      maximum: isSuccess ? Math.max(...data[temperature].value) : 0,
-      average: isSuccess
-        ? data[temperature].value.reduce((a: number, b: number) => a + b, 0) /
-          data[temperature].value.length
-        : 0
+      minimum: Math.min(...data[temperature].value),
+      maximum: Math.max(...data[temperature].value),
+      average:
+        data[temperature].value.reduce((a: number, b: number) => a + b, 0) /
+        data[temperature].value.length
     },
-    cloudCover: isSuccess
-      ? data[cloudCover].value.reduce((a: number, b: number) => a + b) /
-        data[cloudCover].value.length
-      : 0,
-    windSpeed: 0,
+    cloudCover:
+      data[cloudCover].value.reduce((a: number, b: number) => a + b) /
+      data[cloudCover].value.length,
+    windSpeed:
+      data[windSpeed].value.reduce((a: number, b: number) => a + b) /
+      data[windSpeed].value.length,
     radiation: 0
   }
 
