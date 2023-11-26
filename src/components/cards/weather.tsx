@@ -72,99 +72,21 @@ export default function Weather(): ReactElement {
   const [activeLocation, setActiveLocation] = useState(LOCATIONS.ruissalo)
 
   const { isSuccess: todayIsSuccess, forecast: today } = useWeather(
-    new Date(),
+    moment().utc().toDate(),
     activeLocation
   )
   const { isSuccess: tomorrowIsSuccess, forecast: tomorrow } = useWeather(
-    moment(new Date()).add(1, 'day').toDate(),
+    moment().utc().add(1, 'day').toDate(),
     activeLocation
   )
 
+  // FIXME: API returns no data for days after tomorrow
   const forecasts: Forecast[] = [
-    {
-      date: new Date(),
-      forecast: 'sunny',
-      temperature: {
-        minimum: 17.3,
-        maximum: 21.2,
-        average: 19.6,
-        values: []
-      },
-      cloudCover: 90,
-      windSpeed: 2.3
-    },
-    {
-      date: moment().add(1, 'day').toDate(),
-      forecast: 'sunny',
-      temperature: {
-        minimum: 17.3,
-        maximum: 21.2,
-        average: 19.6,
-        values: []
-      },
-      cloudCover: 90,
-      windSpeed: 2.3
-    },
-    {
-      date: moment().add(2, 'days').toDate(),
-      forecast: 'sunny',
-      temperature: {
-        minimum: 17.3,
-        maximum: 21.2,
-        average: 19.6,
-        values: []
-      },
-      cloudCover: 90,
-      windSpeed: 2.3
-    },
-    {
-      date: moment().add(3, 'days').toDate(),
-      forecast: 'sunny',
-      temperature: {
-        minimum: 17.3,
-        maximum: 21.2,
-        average: 19.6,
-        values: []
-      },
-      cloudCover: 90,
-      windSpeed: 2.3
-    },
-    {
-      date: moment().add(4, 'days').toDate(),
-      forecast: 'sunny',
-      temperature: {
-        minimum: 17.3,
-        maximum: 21.2,
-        average: 19.6,
-        values: []
-      },
-      cloudCover: 90,
-      windSpeed: 2.3
-    },
-    {
-      date: moment().add(5, 'days').toDate(),
-      forecast: 'sunny',
-      temperature: {
-        minimum: 17.3,
-        maximum: 21.2,
-        average: 19.6,
-        values: []
-      },
-      cloudCover: 90,
-      windSpeed: 2.3
-    },
-    {
-      date: moment().add(6, 'days').toDate(),
-      forecast: 'sunny',
-      temperature: {
-        minimum: 17.3,
-        maximum: 21.2,
-        average: 19.6,
-        values: []
-      },
-      cloudCover: 90,
-      windSpeed: 2.3
-    }
+    tomorrow,
+    tomorrow,
+    tomorrow,
+    tomorrow,
+    tomorrow
   ]
 
   return (
@@ -242,11 +164,8 @@ export default function Weather(): ReactElement {
       {activeTab == 'this week' && (
         <>
           <div className="flex items-center justify-between">
-            {forecasts.slice(2).map((forecast) => (
-              <div
-                key={forecast.date.getTime()}
-                className="flex flex-col gap-2 items-center"
-              >
+            {forecasts.map((forecast, i) => (
+              <div key={i} className="flex flex-col gap-2 items-center">
                 <CloudIcon className="inline-block w-6 h-6" />
 
                 <div>
