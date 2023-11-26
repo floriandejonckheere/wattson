@@ -17,6 +17,9 @@ export default function Temperature(props: TemperatureProps): ReactElement {
       },
       toolbar: {
         show: false
+      },
+      animations: {
+        enabled: false
       }
     },
     colors: ['#0369A1'],
