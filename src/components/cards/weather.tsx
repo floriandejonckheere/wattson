@@ -73,11 +73,13 @@ export default function Weather(): ReactElement {
 
   const { isSuccess: todayIsSuccess, forecast: today } = useWeather(
     moment().utc().toDate(),
-    activeLocation
+    activeLocation,
+    activeTab == 'today'
   )
   const { isSuccess: tomorrowIsSuccess, forecast: tomorrow } = useWeather(
     moment().utc().add(1, 'day').toDate(),
-    activeLocation
+    activeLocation,
+    activeTab === 'tomorrow'
   )
 
   // FIXME: API returns no data for days after tomorrow

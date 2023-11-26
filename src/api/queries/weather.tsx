@@ -5,7 +5,11 @@ import { predictions } from '../predictions'
 
 import { Location, Forecast } from '../../types'
 
-export const useWeather = (date: Date, location: Location) => {
+export const useWeather = (
+  date: Date,
+  location: Location,
+  enabled: boolean
+) => {
   const start = moment(date).startOf('day')
 
   const startTime = start.format()
@@ -19,15 +23,18 @@ export const useWeather = (date: Date, location: Location) => {
     queries: [
       {
         queryKey: ['predictions', temperature, startTime, endTime],
-        queryFn: () => predictions(temperature, startTime, endTime)
+        queryFn: () => predictions(temperature, startTime, endTime),
+        enabled
       },
       {
         queryKey: ['predictions', cloudCover, startTime, endTime],
-        queryFn: () => predictions(cloudCover, startTime, endTime)
+        queryFn: () => predictions(cloudCover, startTime, endTime),
+        enabled
       },
       {
         queryKey: ['predictions', windSpeed, startTime, endTime],
-        queryFn: () => predictions(windSpeed, startTime, endTime)
+        queryFn: () => predictions(windSpeed, startTime, endTime),
+        enabled
       }
     ],
     combine: (results) => {
