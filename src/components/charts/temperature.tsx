@@ -2,7 +2,12 @@ import { ReactElement, useState } from 'react'
 import Chart from 'react-apexcharts'
 import { ApexOptions } from 'apexcharts'
 
-export default function Temperature(): ReactElement {
+interface TemperatureProps {
+  categories: string[]
+  data: number[]
+}
+
+export default function Temperature(props: TemperatureProps): ReactElement {
   const [options] = useState<ApexOptions>({
     chart: {
       id: 'temperature',
@@ -26,7 +31,7 @@ export default function Temperature(): ReactElement {
       }
     },
     xaxis: {
-      categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      categories: props.categories
     },
     yaxis: {
       labels: {
@@ -36,7 +41,7 @@ export default function Temperature(): ReactElement {
     series: [
       {
         name: 'Temperature',
-        data: [14, 15, 16, 14, 18, 19, 20]
+        data: props.data
       }
     ]
   })
