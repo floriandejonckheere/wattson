@@ -6,7 +6,7 @@ import { predictions } from '../predictions'
 import { Location, Forecast } from '../../types'
 
 export const useWeather = (date: Date, location: Location) => {
-  const start = moment(date).utc().startOf('day')
+  const start = moment(date).startOf('day')
 
   const startTime = start.format()
   const endTime = start.add(23, 'hours').format()
