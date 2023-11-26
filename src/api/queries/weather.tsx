@@ -60,16 +60,10 @@ export const useWeather = (date: Date, location: Location) => {
     temperature: {
       minimum: Math.min(...data[temperature].value),
       maximum: Math.max(...data[temperature].value),
-      average:
-        data[temperature].value.reduce((a: number, b: number) => a + b, 0) /
-        data[temperature].value.length
+      average: Math.avg(data[temperature].value),
     },
-    cloudCover:
-      data[cloudCover].value.reduce((a: number, b: number) => a + b) /
-      data[cloudCover].value.length,
-    windSpeed:
-      data[windSpeed].value.reduce((a: number, b: number) => a + b) /
-      data[windSpeed].value.length,
+    cloudCover: Math.avg(data[cloudCover].value),
+    windSpeed: Math.avg(data[windSpeed].value),
     radiation: 0
   }
 
