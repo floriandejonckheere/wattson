@@ -14,5 +14,4 @@ export interface Forecast {
   }
   cloudCover: number
   windSpeed: number
-  radiation: number
 }

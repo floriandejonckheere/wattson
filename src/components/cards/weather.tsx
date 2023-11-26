@@ -49,7 +49,6 @@ function WeatherDetail(props: {
         <div className="text-sm text-gray-700">
           <p>Cloud cover: {Math.round(forecast.cloudCover)}%</p>
           <p>Wind speed: {forecast.windSpeed.toFixed(1)} m/s</p>
-          <p>Radiation: {forecast.radiation.toFixed(1)} W/m&sup2;</p>
         </div>
       </div>
 
@@ -83,8 +82,7 @@ export default function Weather(): ReactElement {
         average: 19.6
       },
       cloudCover: 90,
-      windSpeed: 2.3,
-      radiation: 37
+      windSpeed: 2.3
     },
     {
       date: moment().add(1, 'day').toDate(),
@@ -95,8 +93,7 @@ export default function Weather(): ReactElement {
         average: 19.6
       },
       cloudCover: 90,
-      windSpeed: 2.3,
-      radiation: 37
+      windSpeed: 2.3
     },
     {
       date: moment().add(2, 'days').toDate(),
@@ -107,8 +104,7 @@ export default function Weather(): ReactElement {
         average: 19.6
       },
       cloudCover: 90,
-      windSpeed: 2.3,
-      radiation: 37
+      windSpeed: 2.3
     },
     {
       date: moment().add(3, 'days').toDate(),
@@ -119,8 +115,7 @@ export default function Weather(): ReactElement {
         average: 19.6
       },
       cloudCover: 90,
-      windSpeed: 2.3,
-      radiation: 37
+      windSpeed: 2.3
     },
     {
       date: moment().add(4, 'days').toDate(),
@@ -131,8 +126,7 @@ export default function Weather(): ReactElement {
         average: 19.6
       },
       cloudCover: 90,
-      windSpeed: 2.3,
-      radiation: 37
+      windSpeed: 2.3
     },
     {
       date: moment().add(5, 'days').toDate(),
@@ -143,8 +137,7 @@ export default function Weather(): ReactElement {
         average: 19.6
       },
       cloudCover: 90,
-      windSpeed: 2.3,
-      radiation: 37
+      windSpeed: 2.3
     },
     {
       date: moment().add(6, 'days').toDate(),
@@ -155,8 +148,7 @@ export default function Weather(): ReactElement {
         average: 19.6
       },
       cloudCover: 90,
-      windSpeed: 2.3,
-      radiation: 37
+      windSpeed: 2.3
     }
   ]
 
