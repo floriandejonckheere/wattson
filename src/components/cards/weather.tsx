@@ -1,46 +1,156 @@
 import { ReactElement, useState } from 'react'
 import moment from 'moment'
 
-import { CloudIcon, SunIcon } from '@heroicons/react/24/outline'
+import {
+  CloudIcon,
+  SunIcon,
+  ChevronDownIcon
+} from '@heroicons/react/24/outline'
 
 import TemperatureChart from '../charts/temperature'
 
 import { Locations } from '../../api/data'
 
+interface Forecast {
+  date: Date
+  forecast: string
+  temperature: {
+    minimum: number
+    maximum: number
+    average: number
+  }
+  cloudCover: number
+  windSpeed: number
+  radiation: number
+}
+
+function WeatherDetail(props: { forecast: Forecast }): ReactElement {
+  const { forecast } = props
+
+  return (
+    <>
+      <div className="flex items-center justify-between">
+        <div>
+          <div className="flex gap-2 items-center">
+            <SunIcon className="inline-block w-6 h-6" />
+
+            <div>
+              <h5 className="text-sm text-gray-500 font-semibold">
+                {moment(forecast.date).format('MMM DD')}
+              </h5>
+              <p className="mt-1 text-3xl font-bold">
+                {forecast.temperature.average.toFixed(1)}{' '}
+                <span className="text-xl">&deg;C</span>
+              </p>
+              <p className="mt-1 text-xs text-gray-500">
+                Min: {forecast.temperature.minimum.toFixed(1)} &deg;C Max:{' '}
+                {forecast.temperature.maximum.toFixed(1)} &deg;C
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="text-sm text-gray-700">
+          <p>Cloud cover: {Math.round(forecast.cloudCover)}%</p>
+          <p>Wind speed: {forecast.windSpeed.toFixed(1)} m/s</p>
+          <p>Radiation: {forecast.radiation.toFixed(1)} W/m&sup2;</p>
+        </div>
+      </div>
+
+      <TemperatureChart
+        categories={['00:00', '03:00', '06:00', '09:00', '12:00', '15:00']}
+        data={[19, 18, 18, 17, 19, 18]}
+      />
+    </>
+  )
+}
 export default function Weather(): ReactElement {
   const [activeTab, setActiveTab] = useState('today')
   const [activeLocation, setActiveLocation] = useState(Locations.ruissalo)
 
-  const weeklyForecast = [
+  const forecasts: Forecast[] = [
     {
-      day: moment().add(2, 'days'),
-      temperature: 19,
-      forecast: 'Cloudy',
-      IconClass: CloudIcon
+      date: new Date(),
+      forecast: 'sunny',
+      temperature: {
+        minimum: 17.3,
+        maximum: 21.2,
+        average: 19.6
+      },
+      cloudCover: 90,
+      windSpeed: 2.3,
+      radiation: 37
     },
     {
-      day: moment().add(3, 'days'),
-      temperature: 18,
-      forecast: 'Sunny',
-      IconClass: SunIcon
+      date: moment().add(1, 'day').toDate(),
+      forecast: 'sunny',
+      temperature: {
+        minimum: 17.3,
+        maximum: 21.2,
+        average: 19.6
+      },
+      cloudCover: 90,
+      windSpeed: 2.3,
+      radiation: 37
     },
     {
-      day: moment().add(4, 'days'),
-      temperature: 16,
-      forecast: 'Rain',
-      IconClass: CloudIcon
+      date: moment().add(2, 'days').toDate(),
+      forecast: 'sunny',
+      temperature: {
+        minimum: 17.3,
+        maximum: 21.2,
+        average: 19.6
+      },
+      cloudCover: 90,
+      windSpeed: 2.3,
+      radiation: 37
     },
     {
-      day: moment().add(5, 'days'),
-      temperature: 19,
-      forecast: 'Cloudy',
-      IconClass: CloudIcon
+      date: moment().add(3, 'days').toDate(),
+      forecast: 'sunny',
+      temperature: {
+        minimum: 17.3,
+        maximum: 21.2,
+        average: 19.6
+      },
+      cloudCover: 90,
+      windSpeed: 2.3,
+      radiation: 37
     },
     {
-      day: moment().add(6, 'days'),
-      temperature: 19,
-      forecast: 'Cloudy',
-      IconClass: CloudIcon
+      date: moment().add(4, 'days').toDate(),
+      forecast: 'sunny',
+      temperature: {
+        minimum: 17.3,
+        maximum: 21.2,
+        average: 19.6
+      },
+      cloudCover: 90,
+      windSpeed: 2.3,
+      radiation: 37
+    },
+    {
+      date: moment().add(5, 'days').toDate(),
+      forecast: 'sunny',
+      temperature: {
+        minimum: 17.3,
+        maximum: 21.2,
+        average: 19.6
+      },
+      cloudCover: 90,
+      windSpeed: 2.3,
+      radiation: 37
+    },
+    {
+      date: moment().add(6, 'days').toDate(),
+      forecast: 'sunny',
+      temperature: {
+        minimum: 17.3,
+        maximum: 21.2,
+        average: 19.6
+      },
+      cloudCover: 90,
+      windSpeed: 2.3,
+      radiation: 37
     }
   ]
 
@@ -56,20 +166,7 @@ export default function Weather(): ReactElement {
                 className="hs-dropdown-toggle py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
               >
                 {activeLocation.name}
-                <svg
-                  className="hs-dropdown-open:rotate-180 w-4 h-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
+                <ChevronDownIcon className="w-4 h-4" />
               </button>
 
               <div
@@ -79,7 +176,7 @@ export default function Weather(): ReactElement {
                 {Object.values(Locations).map((location) => (
                   <a
                     className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
-                    href="#"
+                    href="javascript:void(0);"
                     onClick={() => setActiveLocation(location)}
                   >
                     {location.name}
@@ -120,100 +217,43 @@ export default function Weather(): ReactElement {
         </div>
       </div>
 
-      {activeTab == 'today' && (
-        <>
-          <div className="flex items-center justify-between">
-            <div>
-              <div className="flex gap-2 items-center">
-                <SunIcon className="inline-block w-6 h-6" />
+      {activeTab == 'today' && <WeatherDetail forecast={forecasts[0]} />}
 
-                <div>
-                  <h5 className="text-sm text-gray-500 font-semibold">
-                    {moment().format('MMM DD')}
-                  </h5>
-                  <p className="mt-1 text-3xl font-bold">
-                    19 <span className="text-xl">&deg;C</span>
-                  </p>
-                  <p className="mt-1 text-xs text-gray-500">
-                    Min: 17.3 &deg;C Max: 21 &deg;C
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="text-sm text-gray-700">
-              <p>Cloud cover: 90%</p>
-              <p>Wind speed: 2.3 m/s</p>
-              <p>Radiation: 37 W/m&sup2;</p>
-            </div>
-          </div>
-
-          <TemperatureChart
-            categories={['00:00', '03:00', '06:00', '09:00', '12:00', '15:00']}
-            data={[19, 18, 18, 17, 19, 18]}
-          />
-        </>
-      )}
-
-      {activeTab == 'tomorrow' && (
-        <>
-          <div className="flex items-center justify-between">
-            <div>
-              <div className="flex gap-2 items-center">
-                <SunIcon className="inline-block w-6 h-6" />
-
-                <div>
-                  <h5 className="text-sm text-gray-500 font-semibold">
-                    {moment().add(1, 'day').format('MMM DD')}
-                  </h5>
-                  <p className="mt-1 text-3xl font-bold">
-                    19 <span className="text-xl">&deg;C</span>
-                  </p>
-                  <p className="mt-1 text-xs text-gray-500">
-                    Min: 17.3 &deg;C Max: 21 &deg;C
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="text-sm text-gray-700">
-              <p>Cloud cover: 90%</p>
-              <p>Wind speed: 2.3 m/s</p>
-              <p>Radiation: 37 W/m&sup2;</p>
-            </div>
-          </div>
-
-          <TemperatureChart
-            categories={['00:00', '03:00', '06:00', '09:00', '12:00', '15:00']}
-            data={[19, 18, 18, 17, 19, 18]}
-          />
-        </>
-      )}
+      {activeTab == 'tomorrow' && <WeatherDetail forecast={forecasts[1]} />}
 
       {activeTab == 'this week' && (
         <>
           <div className="flex items-center justify-between">
-            {weeklyForecast.map(({ day, temperature, forecast, IconClass }) => (
+            {forecasts.slice(2).map((forecast) => (
               <div
-                key={day.format()}
+                key={forecast.date.getTime()}
                 className="flex flex-col gap-2 items-center"
               >
-                <IconClass className="inline-block w-6 h-6" />
+                <CloudIcon className="inline-block w-6 h-6" />
 
                 <div>
                   <h5 className="text-sm text-gray-500 font-semibold">
-                    {day.format('ddd DD')}
+                    {moment(forecast.date).format('ddd DD')}
                   </h5>
                   <p className="mt-1 text-3xl font-bold">
-                    {temperature} <span className="text-xl">&deg;C</span>
+                    {Math.round(forecast.temperature.average)}{' '}
+                    <span className="text-xl">&deg;C</span>
                   </p>
-                  <p className="mt-1 text-xs text-gray-500">{forecast}</p>
+                  <p className="mt-1 text-xs text-gray-500">
+                    {forecast.forecast}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
 
           <TemperatureChart
-            categories={weeklyForecast.map(({ day }) => day.format('DD'))}
-            data={weeklyForecast.map(({ temperature }) => temperature)}
+            categories={forecasts
+              .slice(2)
+              .map((forecast) => moment(forecast.date).format('DD'))}
+            data={forecasts
+              .slice(2)
+              .map((forecast) => Math.round(forecast.temperature.average))}
           />
         </>
       )}
