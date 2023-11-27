@@ -16,3 +16,8 @@ export interface Forecast {
   cloudCover: number
   windSpeed: number
 }
+
+export type ThemeContextType = {
+  darkMode: boolean
+  toggleDarkMode: () => void
+}
