@@ -5,6 +5,8 @@ import { Link, Outlet } from 'react-router-dom'
 
 import { BoltIcon } from '@heroicons/react/24/solid'
 
+import EnergyAlerts from '../components/energy_alerts'
+
 import { me } from '../api/users'
 
 import DarkModeToggle from '../components/dark_mode_toggle'
@@ -35,6 +37,7 @@ export default function Navigation(): ReactElement {
             className="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block"
           >
             <div className="flex flex-col gap-10 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
+              <EnergyAlerts />
               {isSuccess && (
                 <Link
                   to="/settings"
