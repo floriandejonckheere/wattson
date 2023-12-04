@@ -20,7 +20,7 @@ export default function Overview(): ReactElement {
             <h4 className="text-lg text-gray-500 dark:text-slate-400 font-semibold">
               Total power
             </h4>
-            <p className="mt-2 text-center text-5xl text-sky-700 font-bold">
+            <p className="mt-2 text-center text-5xl text-sky-700 font-bold dark:text-gray-200">
               2000 W
             </p>
           </div>
@@ -52,7 +52,7 @@ export default function Overview(): ReactElement {
               <p className="mt-1 text-3xl font-bold flex items-center dark:text-slate-300">
                 15.71&nbsp;
                 <span className="text-xl">c&euro;/kWh</span>
-                <span className="mx-2 px-1.5 py-1 rounded-sm text-xs font-medium bg-red-100 text-red-800">
+                <span className="mx-2 px-1.5 py-1 rounded-sm text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300">
                   &#9650; 8%
                 </span>
               </p>
@@ -67,7 +67,7 @@ export default function Overview(): ReactElement {
               <p className="mt-1 text-3xl font-bold flex items-center dark:text-slate-300">
                 0.31&nbsp;
                 <span className="text-xl">&euro;/h</span>
-                <span className="mx-2 px-1.5 py-1 rounded-sm text-xs font-medium bg-green-100 text-green-800">
+                <span className="mx-2 px-1.5 py-1 rounded-sm text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
                   &#9660; 75%
                 </span>
               </p>
