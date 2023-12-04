@@ -1,0 +1,20 @@
+version: "3.11"
+
+services:
+  app:
+    image: ghcr.io/floriandejonckheere/wattson:latest
+    restart: unless-stopped
+    labels:
+      traefik.enable: "true"
+      traefik.http.middlewares.wattson-tls.redirectscheme.scheme: "https"
+
+      traefik.http.routers.wattson.rule: "Host(`wattson.florian.dejonckhee.re`)"
+      traefik.http.routers.wattson.entrypoints: "web"
+      traefik.http.routers.wattson.middlewares: "wattson-tls"
+
+      traefik.http.routers.wattson-tls.rule: "Host(`wattson.florian.dejonckhee.re`)"
+      traefik.http.routers.wattson-tls.entrypoints: "websecure"
+      traefik.http.routers.wattson-tls.tls: "true"
+      traefik.http.routers.wattson-tls.tls.certresolver: "letsencrypt"
+
+      traefik.http.services.wattson.loadbalancer.server.port: "80"
