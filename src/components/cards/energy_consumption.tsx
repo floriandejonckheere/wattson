@@ -57,7 +57,7 @@ export default function EnergyConsumption(): ReactElement {
   ])
 
   return (
-    <div className="flex flex-col gap-6 bg-white rounded-lg shadow p-7 dark:bg-slate-900">
+    <div className="flex flex-col gap-6 bg-white rounded-lg shadow p-7 dark:bg-slate-700">
       <div>
         <div className="float-right">
           <div className="hs-dropdown relative inline-flex [--placement:bottom-right]">

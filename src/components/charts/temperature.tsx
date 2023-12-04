@@ -1,6 +1,8 @@
-import { ReactElement, useState } from 'react'
+import { ReactElement, useState, useEffect } from 'react'
 import Chart from 'react-apexcharts'
-import { ApexOptions } from 'apexcharts'
+import apexchart, { ApexOptions } from 'apexcharts'
+
+import { useTheme } from '../../themeContext'
 
 interface TemperatureProps {
   categories: string[]
@@ -8,10 +10,21 @@ interface TemperatureProps {
 }
 
 export default function Temperature(props: TemperatureProps): ReactElement {
+  const { darkMode } = useTheme()
+
+  useEffect(() => {
+    // here
+    apexchart.exec('temperature', 'render')
+  }, [darkMode])
+
   const [options] = useState<ApexOptions>({
+    theme: {
+      mode: darkMode ? 'dark' : 'light'
+    },
     chart: {
       id: 'temperature',
       type: 'line',
+      background: 'transparent',
       zoom: {
         enabled: false
       },
