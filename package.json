@@ -1,9 +1,19 @@
 {
   "name": "vite-react-typescript-tailwind-starter",
+  "description": "Smart energy assistant",
+  "homepage": "https://github.com/floriandejonckheere/wattson",
+  "author": "Florian Dejonckheere",
+  "contributors": [
+    {
+      "name": "Otto Heldt"
+    }
+  ],
+  "license": "UNLICENSED",
+  "private": true,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "serve": "vite preview --port 3000",
     "lint": "eslint . --ext .ts,.tsx,.js",
     "prepare": "husky install",
