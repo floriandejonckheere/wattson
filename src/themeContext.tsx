@@ -1,5 +1,5 @@
 // themeContext.tsx
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react'
 
 type ThemeContextType = {
   darkMode: boolean
@@ -13,11 +13,25 @@ type ThemeProviderProps = {
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [darkMode, setDarkMode] = useState<boolean>(false)
+  const [darkMode, setDarkMode] = useState<boolean>(
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+  )
 
   const toggleDarkMode = () => {
     setDarkMode((prevDarkMode) => !prevDarkMode)
   }
+
+  const mediaQueryListener = (e: MediaQueryListEvent) => {
+    setDarkMode(e.matches)
+  }
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    mediaQuery.addListener(mediaQueryListener)
+
+    // Cleanup function to remove the listener
+    return () => mediaQuery.removeListener(mediaQueryListener)
+  }, [])
 
   // Apply the 'dark' class to the root element when dark mode is active
   const rootClass = ` ${darkMode ? 'dark' : ''} h-screen w-screen `
