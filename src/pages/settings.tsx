@@ -37,7 +37,7 @@ export default function Settings(): ReactElement {
 
   return (
     <>
-      <h2 className="text-xl font-bold">Settings</h2>
+      <h2 className="text-xl font-bold dark:text-slate-300">Settings</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-8 gap-16">
         <div className="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
