@@ -3,7 +3,7 @@ import axios, { AxiosError } from 'axios'
 export function predictions(
   program: string,
   starttime: string,
-  enddtime: string
+  endtime: string
 ) {
   const token = localStorage.getItem('token')
 
@@ -16,7 +16,7 @@ export function predictions(
       params: {
         program,
         starttime,
-        enddtime,
+        endtime,
         download: 'no'
       },
       headers: {

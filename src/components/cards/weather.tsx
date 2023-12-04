@@ -67,6 +67,7 @@ function WeatherDetail(props: {
     </>
   )
 }
+
 export default function Weather(): ReactElement {
   const [activeTab, setActiveTab] = useState('today')
   const [activeLocation, setActiveLocation] = useState(LOCATIONS.ruissalo)
