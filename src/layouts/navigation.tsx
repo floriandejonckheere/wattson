@@ -57,7 +57,7 @@ export default function Navigation(): ReactElement {
                   id="hs-large-switch-soft-with-icons"
                   className="peer relative shrink-0 w-[4.25rem] h-9 p-px bg-gray-100 border border-gray-200 text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 ring-0 ring-transparent disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-sky-700 checked:border-sky-500 focus:ring-offset-0 focus:ring-transparent dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-800/30 dark:checked:border-blue-800 before:inline-block before:w-8 before:h-8 before:bg-white checked:before:bg-blue-600 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-sky-700"
                   checked={darkMode}
-                  onClick={toggleDarkMode}
+                  onChange={toggleDarkMode}
                 />
                 <label
                   htmlFor="hs-large-switch-soft-with-icons"
