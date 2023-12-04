@@ -9,35 +9,25 @@ on:
       - master
 
 jobs:
-  lint:
+  app:
+    name: Continuous Integration
     runs-on: ubuntu-22.04
-    name: Lint
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: '18'
-      - run: yarn
-      - run: yarn lint
-  build:
-    runs-on: ubuntu-22.04
-    needs: lint
-    name: Build
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-      - run: yarn
-      - run: yarn build
-  test:
-    runs-on: ubuntu-22.04
-    needs: build
-    name: Test
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-      - run: yarn
-      - run: yarn test
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Test
+        run: yarn test
+
+      - name: Build
+        run: yarn build
