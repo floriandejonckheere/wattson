@@ -21,3 +21,15 @@ export type ThemeContextType = {
   darkMode: boolean
   toggleDarkMode: () => void
 }
+
+export interface Sensor {
+  name: string
+  device: string
+  sensor: string
+}
+
+export interface Measurement {
+  starttime: string[]
+  unit: string
+  value: number[]
+}

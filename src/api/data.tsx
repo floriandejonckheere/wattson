@@ -10,3 +10,11 @@ export const LOCATIONS = {
     longitude: 22.2982
   }
 }
+
+export const SENSORS = {
+  heat_pump: {
+    name: 'Heat pump',
+    device: 'Tyyssija_Heat_Pump',
+    sensor: '131EE01Power'
+  }
+}
