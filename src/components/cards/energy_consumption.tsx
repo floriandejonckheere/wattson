@@ -30,6 +30,14 @@ function EnergyConsumptionDetail(props: {
 
   const measurement: Measurement = data[sensor.sensor]
 
+  if (!measurement) {
+    return (
+      <div className="flex justify-center items-center h-48">
+        <p className="text-sm text-gray-400">No data available</p>
+      </div>
+    )
+  }
+
   return (
     <MeasurementsChart
       categories={measurement.starttime}
