@@ -130,7 +130,7 @@ export default function Dashboard(): ReactElement {
 
       <div className="p-10 w-full">
         <h1 className="text-3xl font-bold mb-10 dark:text-slate-300">
-          Good {moment}, {!isPending && !isError && data.username}!
+          Good {moment}{!isPending && !isError && ', ' + data.username}!
         </h1>
 
         <Outlet />
