@@ -130,7 +130,8 @@ export default function Dashboard(): ReactElement {
 
       <div className="p-10 w-full">
         <h1 className="text-3xl font-bold mb-10 dark:text-slate-300">
-          Good {moment}{isSuccess && ', ' + data.username}!
+          Good {moment}
+          {isSuccess && ', ' + data.username}!
         </h1>
 
         <Outlet />

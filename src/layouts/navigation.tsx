@@ -40,14 +40,14 @@ export default function Navigation(): ReactElement {
                   to="/settings"
                   className="flex items-center justify-between gap-4 font-medium text-gray-600 hover:text-gray-900 dark:text-slate-400 dark:hover:text-slate-100"
                 >
-                <span className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-gray-800 font-semibold text-white leading-none dark:bg-slate-200 dark:text-gray-800">
-                  {data.username.charAt(0).toUpperCase()}
-                </span>
+                  <span className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-gray-800 font-semibold text-white leading-none dark:bg-slate-200 dark:text-gray-800">
+                    {data.username.charAt(0).toUpperCase()}
+                  </span>
                   <div className="flex flex-col">
                     <span>{data.username}</span>
                     <span className="text-gray-400 dark:text-slate-500">
-                    {data.email}
-                  </span>
+                      {data.email}
+                    </span>
                   </div>
                 </Link>
               )}
