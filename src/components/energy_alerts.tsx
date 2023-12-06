@@ -9,40 +9,9 @@ import {
 
 import { Cog6ToothIcon } from '@heroicons/react/24/solid'
 
-import { Alert } from '../types'
+import { ALERTS } from '../api/data'
 
 export default function EnergyAlerts(): ReactElement {
-  const alerts: Alert[] = [
-    {
-      id: 1,
-      date: new Date(),
-      type: 'info',
-      color: 'blue',
-      title: 'New device',
-      message: 'A new device was detected: Smart Hub',
-      unread: true
-    },
-    {
-      id: 2,
-      date: new Date(),
-      type: 'warning',
-      color: 'yellow',
-      title: 'Energy usage',
-      message: 'Heat pump used 13% more energy last month',
-      unread: true
-    },
-    {
-      id: 3,
-      date: new Date(),
-      type: 'error',
-      color: 'red',
-      title: 'Unplug EV',
-      message:
-        'Your EV has been fully charged since 2 hours ago, unplug it from the shared charger to allow other residents to use it',
-      unread: false
-    }
-  ]
-
   return (
     <div className="hs-dropdown relative inline-flex">
       <button
@@ -64,7 +33,7 @@ export default function EnergyAlerts(): ReactElement {
           </a>
           <span className="text-sm font-bold text-white">Energy Alerts</span>
         </div>
-        {alerts.map((alert, index) => (
+        {ALERTS.map((alert, index) => (
           <a
             href="#"
             className={`flex flex-col transition-all hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 ${
@@ -75,7 +44,7 @@ export default function EnergyAlerts(): ReactElement {
                 : alert.type === 'warning'
                   ? 'border-l-4 border-yellow-400'
                   : 'border-l-4 border-red-600'
-            } ${index == alerts.length - 1 && 'rounded-b-lg'}`}
+            } ${index == ALERTS.length - 1 && 'rounded-b-lg'}`}
           >
             <div className="flex items-center p-4 md:p-5">
               <span className="flex me-5">
