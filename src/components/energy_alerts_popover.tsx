@@ -63,7 +63,7 @@ export default function EnergyAlertsPopover(): ReactElement {
             }`}
           >
             <div className="flex items-center p-4 md:p-5">
-              <span className="flex me-5">
+              <span className="flex items-center me-5">
                 {(alert.type === 'info' && (
                   <InformationCircleIcon className="w-10 h-10 dark:text-gray-200" />
                 )) ||
