@@ -9,7 +9,7 @@ import { me } from '../api/users'
 import { useTheme } from '../themeContext'
 
 export default function Navigation(): ReactElement {
-  const { isPending, isError, data } = useQuery({
+  const { isSuccess, data } = useQuery({
     queryKey: ['me'],
     queryFn: me
   })
@@ -35,22 +35,22 @@ export default function Navigation(): ReactElement {
             className="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block"
           >
             <div className="flex flex-col gap-10 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
-              <Link
-                to="/settings"
-                className="flex items-center justify-between gap-4 font-medium text-gray-600 hover:text-gray-900 dark:text-slate-400 dark:hover:text-slate-100"
-              >
+              {isSuccess && (
+                <Link
+                  to="/settings"
+                  className="flex items-center justify-between gap-4 font-medium text-gray-600 hover:text-gray-900 dark:text-slate-400 dark:hover:text-slate-100"
+                >
                 <span className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-gray-800 font-semibold text-white leading-none dark:bg-slate-200 dark:text-gray-800">
-                  {!isPending &&
-                    !isError &&
-                    data.username.charAt(0).toUpperCase()}
+                  {data.username.charAt(0).toUpperCase()}
                 </span>
-                <div className="flex flex-col">
-                  <span>{!isPending && !isError && data.username}</span>
-                  <span className="text-gray-400 dark:text-slate-500">
-                    {!isPending && !isError && data.email}
+                  <div className="flex flex-col">
+                    <span>{data.username}</span>
+                    <span className="text-gray-400 dark:text-slate-500">
+                    {data.email}
                   </span>
-                </div>
-              </Link>
+                  </div>
+                </Link>
+              )}
               <div className="relative inline-block">
                 <input
                   type="checkbox"

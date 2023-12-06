@@ -13,7 +13,7 @@ import {
 import { me } from '../api/users'
 
 export default function Dashboard(): ReactElement {
-  const { isPending, isError, data } = useQuery({
+  const { isSuccess, data } = useQuery({
     queryKey: ['me'],
     queryFn: me
   })
@@ -92,7 +92,7 @@ export default function Dashboard(): ReactElement {
                 Suggestions
               </NavLink>
             </li>
-            {!isPending && !isError && data.is_admin && (
+            {isSuccess && data.is_admin && (
               <li>
                 <NavLink
                   to="/administration"
@@ -130,7 +130,7 @@ export default function Dashboard(): ReactElement {
 
       <div className="p-10 w-full">
         <h1 className="text-3xl font-bold mb-10 dark:text-slate-300">
-          Good {moment}{!isPending && !isError && ', ' + data.username}!
+          Good {moment}{isSuccess && ', ' + data.username}!
         </h1>
 
         <Outlet />
