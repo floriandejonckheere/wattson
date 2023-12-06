@@ -33,3 +33,13 @@ export interface Measurement {
   unit: string
   value: number[]
 }
+
+export interface Alert {
+  id: number
+  date: Date
+  type: string
+  color: string
+  title: string
+  message: string
+  unread: boolean
+}
