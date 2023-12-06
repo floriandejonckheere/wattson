@@ -57,7 +57,7 @@ export default function EnergyAlerts(): ReactElement {
             {alert.unread && (
               <a
                 href="#"
-                className="hs-tooltip hs-tooltip-toggle p-4"
+                className="hs-tooltip hs-tooltip-toggle p-4 float-right ml-auto"
                 title="Mark as read"
               >
                 <div className="w-2 h-2 rounded-full bg-sky-700 dark:bg-white"></div>
