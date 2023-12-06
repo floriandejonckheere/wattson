@@ -11,7 +11,7 @@ import { BoltIcon, Cog6ToothIcon } from '@heroicons/react/24/solid'
 
 import { ALERTS } from '../api/data'
 
-export default function EnergyAlerts(): ReactElement {
+export default function EnergyAlertsPopover(): ReactElement {
   return (
     <div className="hs-dropdown relative inline-flex">
       <button
