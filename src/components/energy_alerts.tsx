@@ -2,12 +2,12 @@ import { ReactElement } from 'react'
 
 import {
   BellIcon,
+  ExclamationTriangleIcon,
   InformationCircleIcon,
-  ShieldExclamationIcon,
-  ExclamationTriangleIcon
+  ShieldExclamationIcon
 } from '@heroicons/react/24/outline'
 
-import { Cog6ToothIcon } from '@heroicons/react/24/solid'
+import { BoltIcon, Cog6ToothIcon } from '@heroicons/react/24/solid'
 
 import { ALERTS } from '../api/data'
 
@@ -27,11 +27,12 @@ export default function EnergyAlerts(): ReactElement {
         aria-labelledby="hs-dropdown-default"
       >
         <div className="absolute -top-4 left-2 w-0 h-0 border-l-[20px] border-l-transparent border-b-[30px] border-b-sky-700 border-r-[20px] border-r-transparent"></div>
-        <div className="px-6 py-4 bg-sky-700 rounded-t-lg">
-          <a href="#" className="float-right text-white">
+        <div className="flex gap-3 items-center px-6 py-4 text-white bg-sky-700 rounded-t-lg">
+          <BoltIcon className="w-5 h-5 text-yellow-400" />
+          <div className="text-sm font-bold text-white">Energy Alerts</div>
+          <a href="#" className="float-right ml-auto">
             <Cog6ToothIcon className="w-6 h-6" />
           </a>
-          <span className="text-sm font-bold text-white">Energy Alerts</span>
         </div>
         {ALERTS.map((alert, index) => (
           <a
