@@ -26,50 +26,73 @@ export default function EnergyAlertsPopover(): ReactElement {
         className="hs-dropdown-menu relative flex flex-col transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
         aria-labelledby="hs-dropdown-default"
       >
-        <div className="absolute -top-4 left-2 w-0 h-0 border-l-[20px] border-l-transparent border-b-[30px] border-b-sky-700 border-r-[20px] border-r-transparent"></div>
-        <div className="flex gap-3 items-center px-6 py-4 text-white bg-sky-700 rounded-t-lg">
+        <div className="absolute -top-4 left-2 w-0 h-0 border-l-[20px] border-l-transparent border-b-[30px] border-b-sky-700 dark:border-b-sky-800 border-r-[20px] border-r-transparent"></div>
+        <div className="flex gap-3 items-center px-6 py-4 text-white bg-sky-700 rounded-t-lg dark:bg-sky-800">
           <BoltIcon className="w-5 h-5 text-yellow-400" />
-          <div className="text-sm font-bold text-white">Energy Alerts</div>
-          <a href="#" className="float-right ml-auto">
-            <Cog6ToothIcon className="w-6 h-6" />
-          </a>
-        </div>
-        {ALERTS.map((alert, index) => (
+          <div className="text-sm font-bold">Energy Alerts</div>
           <a
             href="#"
-            className={`flex flex-col transition-all hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 ${
-              alert.unread && 'bg-sky-50 hover:bg-sky-100'
+            className="hs-tooltip hs-tooltip-toggle float-right ml-auto"
+          >
+            <Cog6ToothIcon className="w-6 h-6" />
+            <span
+              className="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-white"
+              role="tooltip"
+            >
+              Alert settings
+            </span>
+          </a>
+        </div>
+        {ALERTS.map((alert) => (
+          <a
+            href="#"
+            className={`flex flex-col transition-all last:rounded-b-lg ${
+              alert.unread
+                ? 'bg-sky-50 hover:bg-sky-100 dark:bg-slate-600 dark:hover:bg-slate-500'
+                : 'bg-white hover:bg-gray-100 dark:bg-slate-700 dark:hover:bg-slate-500'
             } ${
               alert.type === 'info'
                 ? 'border-l-4 border-sky-700'
                 : alert.type === 'warning'
                   ? 'border-l-4 border-yellow-400'
-                  : 'border-l-4 border-red-600'
-            } ${index == ALERTS.length - 1 && 'rounded-b-lg'}`}
+                  : 'border-l-4 border-red-600 dark:border-l-4 dark:border-red-800'
+            }`}
           >
             <div className="flex items-center p-4 md:p-5">
               <span className="flex me-5">
                 {(alert.type === 'info' && (
-                  <InformationCircleIcon className="w-10 h-10" />
+                  <InformationCircleIcon className="w-10 h-10 dark:text-gray-200" />
                 )) ||
                   (alert.type === 'warning' && (
-                    <ShieldExclamationIcon className="w-10 h-10" />
+                    <ShieldExclamationIcon className="w-10 h-10 dark:text-gray-200" />
                   )) ||
                   (alert.type === 'error' && (
-                    <ExclamationTriangleIcon className="w-10 h-10" />
+                    <ExclamationTriangleIcon className="w-10 h-10 dark:text-gray-200" />
                   ))}
 
                 <span className="ms-5">
                   <span className="block font-medium text-gray-800 dark:text-gray-200">
                     {alert.title}
                   </span>
-                  <span className="block text-sm text-gray-500 w-80">
+                  <span className="block text-sm text-gray-500 w-80 dark:text-gray-400">
                     {alert.message}
                   </span>
                 </span>
               </span>
               {alert.unread && (
-                <span className="w-2 h-2 bg-sky-700 rounded-full"></span>
+                <a
+                  href="#"
+                  className="hs-tooltip hs-tooltip-toggle p-4"
+                  title="Mark as read"
+                >
+                  <div className="w-2 h-2 rounded-full bg-sky-700 dark:bg-white"></div>
+                  <span
+                    className="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-white"
+                    role="tooltip"
+                  >
+                    Mark as read
+                  </span>
+                </a>
               )}
             </div>
           </a>
