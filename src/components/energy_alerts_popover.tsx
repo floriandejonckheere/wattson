@@ -17,9 +17,12 @@ export default function EnergyAlertsPopover(): ReactElement {
       <button
         id="hs-dropdown-default"
         type="button"
-        className="hs-dropdown-toggle py-4 px-3 inline-flex items-center gap-x-2 text-sm rounded-lg font-medium text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+        className="relative hs-dropdown-toggle py-4 px-3 inline-flex items-center gap-x-2 text-sm rounded-lg font-medium text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
       >
         <BellIcon className="w-5 h-5" />
+        {ALERTS.some((alert) => alert.unread) && (
+          <div className="absolute right-1.5 bottom-1.5 w-2 h-2 rounded-full bg-red-700 dark:bg-white"></div>
+        )}
       </button>
 
       <div
@@ -45,6 +48,7 @@ export default function EnergyAlertsPopover(): ReactElement {
         </div>
         {ALERTS.map((alert) => (
           <a
+            key={alert.id}
             href="#"
             className={`flex flex-col transition-all last:rounded-b-lg ${
               alert.unread
