@@ -1246,14 +1246,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18.2.41":
-  version: 18.2.41
-  resolution: "@types/react@npm:18.2.41"
+"@types/react@npm:^18.2.42":
+  version: 18.2.42
+  resolution: "@types/react@npm:18.2.42"
   dependencies:
     "@types/prop-types": "npm:*"
     "@types/scheduler": "npm:*"
     csstype: "npm:^3.0.2"
-  checksum: 5cc72491ce8be95e7bbedd8bf039ca971772ecd22d989feb045af7e73247c7e6cff25a2f1c2200be461fb2f6b5aacef739e1ba9fd83c744209dfd3ce8aa75afe
+  checksum: 2946d78c1f9a220a4dfedd7995b8bcba47235b19756bf3dd845c604bb24fff8d0ff5be81c0c98ac7f4488791e8c7e6cbcc4898c40c0209d74a1223b8fbfb994f
   languageName: node
   linkType: hard
 
@@ -1644,9 +1644,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"apexcharts@npm:^3.44.1":
-  version: 3.44.1
-  resolution: "apexcharts@npm:3.44.1"
+"apexcharts@npm:^3.44.2":
+  version: 3.44.2
+  resolution: "apexcharts@npm:3.44.2"
   dependencies:
     "@yr/monotone-cubic-spline": "npm:^1.0.3"
     svg.draggable.js: "npm:^2.2.2"
@@ -1655,7 +1655,7 @@ __metadata:
     svg.pathmorphing.js: "npm:^0.1.3"
     svg.resize.js: "npm:^1.4.3"
     svg.select.js: "npm:^3.0.1"
-  checksum: c130defff859706723a9f128be881a0ab928a56c7241333e22552e3aca9ce397dd02cb9f68d45ef4d1a13abb18301520b60cd8f05a7c1690cf297e1eaed744c7
+  checksum: 3945de6e2ee3136e437a48baddfc40a0f3c0600485ce38f6ea66852fa212846e05ce91160d5564ce4be00aa1fce661336b76b89799966e729acaf43c704ec695
   languageName: node
   linkType: hard
 
@@ -6707,12 +6707,12 @@ __metadata:
     "@types/eslint": "npm:^8.44.8"
     "@types/eslint-config-prettier": "npm:^6.11.3"
     "@types/node": "npm:20.10.3"
-    "@types/react": "npm:^18.2.41"
+    "@types/react": "npm:^18.2.42"
     "@typescript-eslint/eslint-plugin": "npm:^6.13.2"
     "@typescript-eslint/parser": "npm:^6.13.2"
     "@uidotdev/usehooks": "npm:^2.4.1"
     "@vitejs/plugin-react": "npm:^4.2.1"
-    apexcharts: "npm:^3.44.1"
+    apexcharts: "npm:^3.44.2"
     autoprefixer: "npm:^10.4.16"
     axios: "npm:^1.6.2"
     eslint: "npm:^8.55.0"
@@ -6731,12 +6731,12 @@ __metadata:
     react-router-dom: "npm:6.20.1"
     tailwindcss: "npm:^3.3.6"
     typescript: "npm:^5.3.2"
-    vite: "npm:^5.0.5"
+    vite: "npm:^5.0.6"
     vitest: "npm:^1.0.1"
   languageName: unknown
   linkType: soft
 
-"vite@npm:^5.0.0-beta.15 || ^5.0.0, vite@npm:^5.0.0-beta.19 || ^5.0.0":
+"vite@npm:^5.0.0-beta.15 || ^5.0.0, vite@npm:^5.0.0-beta.19 || ^5.0.0, vite@npm:^5.0.6":
   version: 5.0.6
   resolution: "vite@npm:5.0.6"
   dependencies:
@@ -6773,46 +6773,6 @@ __metadata:
   bin:
     vite: bin/vite.js
   checksum: 5c0f29e81865c8a4992d7a13a9c736b79a6caa4cdd98ade73ab5923e928818dddc23a954c99a3e1de5d59a0e004e7e86344c18a955e6d06194d7e394d7027e20
-  languageName: node
-  linkType: hard
-
-"vite@npm:^5.0.5":
-  version: 5.0.5
-  resolution: "vite@npm:5.0.5"
-  dependencies:
-    esbuild: "npm:^0.19.3"
-    fsevents: "npm:~2.3.3"
-    postcss: "npm:^8.4.32"
-    rollup: "npm:^4.2.0"
-  peerDependencies:
-    "@types/node": ^18.0.0 || >=20.0.0
-    less: "*"
-    lightningcss: ^1.21.0
-    sass: "*"
-    stylus: "*"
-    sugarss: "*"
-    terser: ^5.4.0
-  dependenciesMeta:
-    fsevents:
-      optional: true
-  peerDependenciesMeta:
-    "@types/node":
-      optional: true
-    less:
-      optional: true
-    lightningcss:
-      optional: true
-    sass:
-      optional: true
-    stylus:
-      optional: true
-    sugarss:
-      optional: true
-    terser:
-      optional: true
-  bin:
-    vite: bin/vite.js
-  checksum: 22fbaacbc87eff7d1de46104880c5d269d3bb2964957e9d13edaac819e6a90b5ce2567b5d0ba8c92a7bd5bcf0412ae7d22ce958047490931fbb466b1908ff17c
   languageName: node
   linkType: hard
 
