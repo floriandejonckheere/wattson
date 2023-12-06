@@ -8,7 +8,7 @@ export default function Suggestions(): ReactElement {
     <>
       <h2 className="text-xl font-bold dark:text-slate-300">Suggestions</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6 gap-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 mt-6 gap-16">
         <EnergyAlerts />
         <Weather />
       </div>
