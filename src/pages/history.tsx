@@ -12,5 +12,4 @@ export default function History(): ReactElement {
       </div>
     </>
   )
-
 }
