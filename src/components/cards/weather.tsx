@@ -35,17 +35,17 @@ function WeatherDetail(props: {
       <div className="flex items-center justify-between">
         <div>
           <div className="flex gap-2 items-center">
-            <SunIcon className="inline-block w-6 h-6" />
+            <SunIcon className="inline-block w-6 h-6 dark:text-white" />
 
             <div>
-              <h5 className="text-sm text-gray-500 font-semibold">
+              <h5 className="text-sm text-gray-500 font-semibold dark:text-gray-300">
                 {moment(forecast.date).format('MMM DD')}
               </h5>
-              <p className="mt-1 text-3xl font-bold">
+              <p className="mt-1 text-3xl font-bold dark:text-white">
                 {forecast.temperature.average.toFixed(1)}{' '}
                 <span className="text-xl">&deg;C</span>
               </p>
-              <p className="mt-1 text-xs text-gray-500">
+              <p className="mt-1 text-xs text-gray-500 dark:text-gray-300">
                 Min: {forecast.temperature.minimum.toFixed(1)} &deg;C Max:{' '}
                 {forecast.temperature.maximum.toFixed(1)} &deg;C
               </p>
@@ -93,7 +93,7 @@ export default function Weather(): ReactElement {
   ]
 
   return (
-    <div className="flex flex-col gap-6 bg-white rounded-lg shadow p-7 dark:bg-slate-900">
+    <div className="flex flex-col gap-6 bg-white rounded-lg shadow p-7 dark:bg-slate-700">
       <div>
         <div className="mb-6">
           <div className="float-right">
@@ -130,24 +130,27 @@ export default function Weather(): ReactElement {
         </div>
         <div className="flex gap-3">
           <button
-            className={`py-1.5 px-3 rounded-full text-xs font-medium ${
-              activeTab == 'today' && 'bg-blue-100 text-blue-600'
+            className={`py-1.5 px-3 rounded-full text-xs font-medium dark:text-white ${
+              activeTab == 'today' &&
+              'bg-blue-100 text-blue-600 dark:bg-slate-800 dark:text-white'
             }`}
             onClick={() => setActiveTab('today')}
           >
             Today
           </button>
           <button
-            className={`py-1.5 px-3 rounded-full text-xs font-medium ${
-              activeTab == 'tomorrow' && 'bg-blue-100 text-blue-600'
+            className={`py-1.5 px-3 rounded-full text-xs font-medium dark:text-white ${
+              activeTab == 'tomorrow' &&
+              'bg-blue-100 text-blue-600 dark:bg-slate-800 dark:text-white'
             }`}
             onClick={() => setActiveTab('tomorrow')}
           >
             Tomorrow
           </button>
           <button
-            className={`py-1.5 px-3 rounded-full text-xs font-medium ${
-              activeTab == 'this week' && 'bg-blue-100 text-blue-600'
+            className={`py-1.5 px-3 rounded-full text-xs font-medium dark:text-white ${
+              activeTab == 'this week' &&
+              'bg-blue-100 text-blue-600 dark:bg-slate-800 dark:text-white'
             }`}
             onClick={() => setActiveTab('this week')}
           >
@@ -169,18 +172,19 @@ export default function Weather(): ReactElement {
           <div className="flex items-center justify-between">
             {forecasts.map((forecast, i) => (
               <div key={i} className="flex flex-col gap-2 items-center">
-                <CloudIcon className="inline-block w-6 h-6" />
+                <CloudIcon className="inline-block w-6 h-6 dark:text-white" />
 
                 <div>
-                  <h5 className="text-sm text-gray-500 font-semibold">
+                  <h5 className="text-sm text-gray-500 font-semibold dark:text-white">
                     {moment(forecast.date).format('ddd DD')}
                   </h5>
-                  <p className="mt-1 text-3xl font-bold">
+                  <p className="mt-1 text-3xl font-bold dark:text-white">
                     {Math.round(forecast.temperature.average)}{' '}
                     <span className="text-xl">&deg;C</span>
                   </p>
-                  <p className="mt-1 text-xs text-gray-500">
-                    {forecast.forecast}
+                  <p className="mt-1 text-xs text-gray-500 dark:text-white">
+                    {forecast.forecast.charAt(0).toUpperCase()}
+                    {forecast.forecast.slice(1)}
                   </p>
                 </div>
               </div>

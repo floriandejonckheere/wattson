@@ -4,6 +4,7 @@ import { useLocalStorage } from '@uidotdev/usehooks'
 
 import Authentication from './authentication'
 
+import Auth from './layouts/auth'
 import Dashboard from './layouts/dashboard'
 import Navigation from './layouts/navigation'
 
@@ -34,8 +35,10 @@ export default function App(): ReactElement {
       <Route path="/" element={<Navigate to="/overview" />} />
 
       <Route element={<Authentication render={!token} path="/overview" />}>
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route element={<Auth />}>
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/signup" element={<Signup />} />
+        </Route>
       </Route>
 
       <Route element={<Authentication render={!!token} path="/signin" />}>
