@@ -91,19 +91,20 @@ export default function Overview(): ReactElement {
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-
               <button className="bg-sky-700 text-gray-800 px-4 py-2 rounded">
                 More info
               </button>
               {isHovered && (
                 <div className="absolute bg-sky-700 text-gray-800 p-4 rounded shadow-md mt-2 dark:bg-white transition-all duration-500">
-                  <p>   A carbon footprint is a measurement of the various
-                        greenhouse gases, such as carbon dioxide (CO2), methane
-                        (CH4), nitrous oxide (N2O), and others, caused by energy
-                        consumption. These gasses are combined into a common unit called carbon
-                        dioxide equivalent (CO2e), based on their
-                        global warming potential. The value for the carbon footprint
-                        is measured by: kW * 1h * 0.5kg CO2/kWh
+                  <p>
+                    A carbon footprint is a measurement of the various
+                    greenhouse gases, such as carbon dioxide (CO2), methane
+                    (CH4), nitrous oxide (N2O), and others, caused by energy
+                    consumption. These gasses are combined into a common
+                    unit called carbon
+                    dioxide equivalent (CO2e), based on their
+                    global warming potential. The value for the carbon footprint
+                    is measured by: kW * 1h * 0.5kg CO2/kWh
                   </p>
                 </div>
               )}
