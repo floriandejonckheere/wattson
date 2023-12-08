@@ -86,14 +86,14 @@ export default function Overview(): ReactElement {
             <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">
               Carbon Footprint
             </h2>
-              <div
-                className="relative"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}>
+            <div
+              className="relative"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}>
 
-                <button className="bg-sky-700 text-gray-800 px-4 py-2 rounded">
+              <button className="bg-sky-700 text-gray-800 px-4 py-2 rounded">
                 More info
-                </button>
+              </button>
               {isHovered && (
                 <div className="absolute bg-sky-700 text-gray-800 p-4 rounded shadow-md mt-2 dark:bg-white transition-all duration-500">
                   <p>A carbon footprint is a measurement of the various greenhouse gases, such as carbon dioxide (CO2), methane (CH4),
