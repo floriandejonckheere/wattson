@@ -12,12 +12,10 @@ import {
 export default function EnergyAlerts(): ReactElement {
   return (
     <div className="flex flex-col gap-4 bg-white rounded-lg shadow p-7 dark:bg-slate-700">
-      <div className="mb-6">
-        <h3 className="flex gap-3 items-center text-xl font-bold text-gray-600 dark:text-gray-200 mb-2">
-          <BoltIcon className="w-5 h-5 text-yellow-400" />
-          Energy alerts
-        </h3>
-      </div>
+      <h3 className="flex gap-3 items-center text-xl font-bold text-gray-600 dark:text-gray-200 mb-6">
+        <BoltIcon className="w-5 h-5 text-yellow-400" />
+        Energy alerts
+      </h3>
       {ALERTS.map((alert) => (
         <div
           key={alert.id}

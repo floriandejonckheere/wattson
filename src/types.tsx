@@ -43,3 +43,9 @@ export interface Alert {
   message: string
   unread: boolean
 }
+
+export interface Suggestion {
+  id: number
+  title: string
+  text: string
+}
