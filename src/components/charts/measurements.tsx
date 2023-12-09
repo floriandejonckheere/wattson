@@ -6,6 +6,7 @@ interface MeasurementProps {
   categories: string[]
   series: { name: string; data: number[] }[]
   unit: string
+  options?: ApexOptions
 }
 
 export default function Measurements(props: MeasurementProps): ReactElement {
@@ -44,7 +45,8 @@ export default function Measurements(props: MeasurementProps): ReactElement {
         formatter: (value) => `${value.toFixed(1)} ${props.unit}`
       }
     },
-    series: props.series
+    series: props.series,
+    ...props.options
   })
 
   return <Chart options={options} series={options.series} height="200" />
