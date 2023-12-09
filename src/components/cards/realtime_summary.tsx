@@ -31,7 +31,8 @@ export default function RealtimeSummary(): ReactElement {
             Voltage
           </h5>
           <p className="mt-1 text-3xl font-bold dark:text-slate-300">
-            237 <span className="text-xl">V</span>
+            {isSuccess && summary.voltage.toFixed(1)}{' '}
+            <span className="text-xl">V</span>
           </p>
         </div>
         <div className="text-right">
