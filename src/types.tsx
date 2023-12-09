@@ -24,6 +24,7 @@ export type ThemeContextType = {
 
 export interface Sensor {
   name: string
+  location: Location
   device: string
   sensor: string
 }

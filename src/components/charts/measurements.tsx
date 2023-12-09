@@ -42,7 +42,7 @@ export default function Measurements(props: MeasurementProps): ReactElement {
     },
     yaxis: {
       labels: {
-        formatter: (value) => `${value.toFixed(3)} ${props.unit}`
+        formatter: (value) => `${value.toFixed(2)} ${props.unit}`
       }
     },
     series: props.series,
