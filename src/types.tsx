@@ -6,7 +6,6 @@ export interface Location {
 
 export interface Forecast {
   date: Date
-  forecast: string
   temperature: {
     minimum: number
     maximum: number

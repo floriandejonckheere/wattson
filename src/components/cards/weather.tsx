@@ -83,15 +83,6 @@ export default function Weather(): ReactElement {
     activeTab === 'tomorrow'
   )
 
-  // FIXME: API returns no data for days after tomorrow
-  const forecasts: Forecast[] = [
-    tomorrow,
-    tomorrow,
-    tomorrow,
-    tomorrow,
-    tomorrow
-  ]
-
   return (
     <div className="flex flex-col gap-6 bg-white rounded-lg shadow p-7 dark:bg-slate-700">
       <div>
@@ -147,15 +138,6 @@ export default function Weather(): ReactElement {
           >
             Tomorrow
           </button>
-          <button
-            className={`py-1.5 px-3 rounded-full text-xs font-medium dark:text-white ${
-              activeTab == 'this week' &&
-              'bg-blue-100 text-blue-600 dark:bg-slate-800 dark:text-white'
-            }`}
-            onClick={() => setActiveTab('this week')}
-          >
-            This week
-          </button>
         </div>
       </div>
 
@@ -165,41 +147,6 @@ export default function Weather(): ReactElement {
 
       {activeTab == 'tomorrow' && (
         <WeatherDetail success={tomorrowIsSuccess} forecast={tomorrow} />
-      )}
-
-      {activeTab == 'this week' && (
-        <>
-          <div className="flex items-center justify-between">
-            {forecasts.map((forecast, i) => (
-              <div key={i} className="flex flex-col gap-2 items-center">
-                <CloudIcon className="inline-block w-6 h-6 dark:text-white" />
-
-                <div>
-                  <h5 className="text-sm text-gray-500 font-semibold dark:text-white">
-                    {moment(forecast.date).format('ddd DD')}
-                  </h5>
-                  <p className="mt-1 text-3xl font-bold dark:text-white">
-                    {Math.round(forecast.temperature.average)}{' '}
-                    <span className="text-xl">&deg;C</span>
-                  </p>
-                  <p className="mt-1 text-xs text-gray-500 dark:text-white">
-                    {forecast.forecast.charAt(0).toUpperCase()}
-                    {forecast.forecast.slice(1)}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <TemperatureChart
-            categories={forecasts
-              .slice(2)
-              .map((forecast) => moment(forecast.date).format('DD'))}
-            data={forecasts
-              .slice(2)
-              .map((forecast) => Math.round(forecast.temperature.average))}
-          />
-        </>
       )}
     </div>
   )
