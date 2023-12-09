@@ -100,7 +100,7 @@ export default function BatteryStatus(): ReactElement {
             <span className="text-xl">kWh</span>
           </p>
           <p className="text-xs text-gray-400 dark:text-slate-400">
-            Since yesterday
+            As of yesterday
           </p>
         </div>
         <div className="text-right">
@@ -112,7 +112,7 @@ export default function BatteryStatus(): ReactElement {
             <span className="text-xl">kWh</span>
           </p>
           <p className="text-xs text-gray-400 dark:text-slate-400">
-            Since yesterday
+            As of yesterday
           </p>
         </div>
       </div>
