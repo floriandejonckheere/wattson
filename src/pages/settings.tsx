@@ -5,7 +5,6 @@ import { useLocalStorage } from '@uidotdev/usehooks'
 import axios from 'axios'
 
 import { changePassword, deleteAccount, me } from '../api/users'
-import { Cog6ToothIcon } from '@heroicons/react/24/solid'
 
 export default function Settings(): ReactElement {
   const [newPassword, setNewPassword] = useState('')
