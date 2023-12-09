@@ -49,3 +49,11 @@ export interface Suggestion {
   title: string
   text: string
 }
+
+export interface BatteryStatus {
+  charge: number
+  health: number
+  capacity: number
+  charged: number
+  discharged: number
+}
