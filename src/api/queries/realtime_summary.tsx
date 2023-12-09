@@ -61,11 +61,18 @@ export const useRealtimeSummary = () => {
     }
   }
 
+  const totalPower =
+    data.pload_L1.value[data.pload_L1.value.length - 1] +
+    data.pload_L2.value[data.pload_L2.value.length - 1] +
+    data.pload_L3.value[data.pload_L3.value.length - 1]
+
+  const energyPrice = Math.avg(data.Spot_price.value)
+
+  // Calculate energy cost over 24 hours
+  const energyCost = (totalPower / 1000) * energyPrice
+
   const summary: RealtimeSummary = {
-    totalPower:
-      data.pload_L1.value[data.pload_L1.value.length - 1] +
-      data.pload_L2.value[data.pload_L2.value.length - 1] +
-      data.pload_L3.value[data.pload_L3.value.length - 1],
+    totalPower,
     voltage: Math.avg([
       data.ul_L1.value[data.ul_L1.value.length - 1],
       data.ul_L2.value[data.ul_L2.value.length - 1],
@@ -75,8 +82,8 @@ export const useRealtimeSummary = () => {
       data.il_L1.value[data.il_L1.value.length - 1] +
       data.il_L2.value[data.il_L2.value.length - 1] +
       data.il_L3.value[data.il_L3.value.length - 1],
-    energyPrice: Math.avg(data.Spot_price.value),
-    energyCost: 0
+    energyPrice,
+    energyCost
   }
 
   return {
