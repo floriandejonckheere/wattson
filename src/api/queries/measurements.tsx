@@ -13,7 +13,7 @@ export const useMeasurements = (
   const start = moment(startTime).format()
   const end = moment(endTime).format()
 
-  const { isSuccess, isError, error, data } = useQueries({
+  const { isSuccess, isError, data } = useQueries({
     queries: sensors.map((sensor) => ({
       queryKey: ['measurements', sensor.name, start, end],
       queryFn: () => measurements(sensor.device, sensor.sensor, start, end)
