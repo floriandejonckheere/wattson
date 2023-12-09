@@ -60,7 +60,7 @@ export default function RealtimeSummary(): ReactElement {
           <h5 className="text-sm text-gray-500 font-semibold dark:text-slate-400">
             Predicted energy cost
           </h5>
-          <p className="mt-1 text-3xl font-bold flex items-center dark:text-slate-300">
+          <p className="mt-1 text-3xl font-bold flex justify-end items-center dark:text-slate-300">
             0.31&nbsp;
             <span className="text-xl">&euro;/h</span>
             <span className="mx-2 px-1.5 py-1 rounded-sm text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
