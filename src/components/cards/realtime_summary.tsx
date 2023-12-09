@@ -40,7 +40,8 @@ export default function RealtimeSummary(): ReactElement {
             Current
           </h5>
           <p className="mt-1 text-3xl font-bold dark:text-slate-300">
-            8.44 <span className="text-xl">A</span>
+            {isSuccess && summary.current.toFixed(1)}{' '}
+            <span className="text-xl">A</span>
           </p>
         </div>
       </div>
