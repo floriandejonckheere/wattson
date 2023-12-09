@@ -13,10 +13,34 @@ export const useMeasurements = (
   const start = moment(startTime).format()
   const end = moment(endTime).format()
 
+  const queries = sensors.reduce(
+    (acc: { [key: string]: Sensor[] }, sensor: Sensor) => {
+      acc[sensor.device] = acc[sensor.device] ?? []
+      acc[sensor.device].push(sensor)
+
+      return acc
+    },
+    {}
+  )
+
   const { isSuccess, isError, data } = useQueries({
-    queries: sensors.map((sensor) => ({
-      queryKey: ['measurements', sensor.name, start, end],
-      queryFn: () => measurements(sensor.device, sensor.sensor, start, end)
+    queries: Object.entries(queries).map(([device, sensors]) => ({
+      queryKey: [
+        'measurements',
+        sensors.reduce(
+          (acc: string, sensor: Sensor) => `${acc},${sensor.name}`,
+          ''
+        ),
+        start,
+        end
+      ],
+      queryFn: () =>
+        measurements(
+          device,
+          sensors.map((sensor) => sensor.sensor),
+          start,
+          end
+        )
     })),
     combine: (results) => {
       return {

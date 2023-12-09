@@ -44,7 +44,7 @@ export const useBatteryStatus = () => {
     queries: queries.map(({ device, sensor, start, end }) => {
       return {
         queryKey: ['measurements', sensor, start, end],
-        queryFn: () => measurements(device, sensor, start, end)
+        queryFn: () => measurements(device, [sensor], start, end)
       }
     }),
     combine: (results) => {
