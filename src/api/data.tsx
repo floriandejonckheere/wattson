@@ -18,33 +18,6 @@ export const LOCATIONS: Location[] = [
   }
 ]
 
-export const SENSORS: Sensor[] = [
-  {
-    name: 'Heat pump',
-    location: LOCATIONS[2],
-    device: 'Heatpump_SE_IEM3155',
-    sensor: 'P_tot'
-  },
-  {
-    name: 'Ravintola',
-    location: LOCATIONS[2],
-    device: 'Ravintola_SE_IEM3155',
-    sensor: 'P_tot'
-  },
-  {
-    name: 'Kuntosali',
-    location: LOCATIONS[2],
-    device: 'Kuntosali_SE_IEM3155',
-    sensor: 'P_tot'
-  },
-  {
-    name: 'Kauppa',
-    location: LOCATIONS[2],
-    device: 'Kauppa_SE_IEM3155',
-    sensor: 'P_tot'
-  }
-]
-
 export const ALERTS: Alert[] = [
   {
     id: 1,
