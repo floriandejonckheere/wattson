@@ -31,6 +31,10 @@ export const useRealtimeSummary = () => {
           measurements('E_HUB', 'pload_L3', startTimeNow, endTimeNow)
       },
       {
+        queryKey: ['measurements', 'ul_L1', startTimeNow, endTimeNow],
+        queryFn: () => measurements('E_HUB', 'ul_L1', startTimeNow, endTimeNow)
+      },
+      {
         queryKey: ['predictions', 'Spot_price', startTimeToday, endTimeToday],
         queryFn: () => predictions('Spot_price', startTimeToday, endTimeToday)
       }
@@ -61,7 +65,7 @@ export const useRealtimeSummary = () => {
       data.pload_L1.value[data.pload_L1.value.length - 1] +
       data.pload_L2.value[data.pload_L2.value.length - 1] +
       data.pload_L3.value[data.pload_L3.value.length - 1],
-    voltage: 0,
+    voltage: data.ul_L1.value[data.ul_L1.value.length - 1],
     current: 0,
     energyPrice: Math.avg(data.Spot_price.value),
     energyCost: 0
