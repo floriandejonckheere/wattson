@@ -14,6 +14,12 @@ import { useMeasurements } from '../../api/queries/measurements'
 
 export const SENSORS: Sensor[] = [
   {
+    name: 'Fronius',
+    location: LOCATIONS[0],
+    device: 'Fronius_Ruissalo',
+    sensor: 'P'
+  },
+  {
     name: 'Fronius Hybrid 4',
     location: LOCATIONS[1],
     device: 'Fronius_Hybrid_4',
@@ -63,15 +69,11 @@ function EnergyProductionDetail(props: {
 }
 
 export default function EnergyProduction(): ReactElement {
-  const [activeLocation, setActiveLocation] = useState(LOCATIONS[1])
+  const [activeLocation, setActiveLocation] = useState(LOCATIONS[0])
   const [activeSensor, setActiveSensor] = useState<Sensor>(SENSORS[0])
 
-  const [startTime, setStartTime] = useState<Date>(
-    moment.utc().set('minute', 0).set('seconds', 0).toDate()
-  )
-  const [endTime, setEndTime] = useState<Date>(
-    moment.utc().add(1, 'hour').set('minute', 0).set('seconds', 0).toDate()
-  )
+  const [startTime, setStartTime] = useState<Date>(new Date(2023, 10, 3, 7))
+  const [endTime, setEndTime] = useState<Date>(new Date(2023, 10, 3, 8))
 
   const { isSuccess, data } = useMeasurements(startTime, endTime, [
     activeSensor
@@ -100,7 +102,13 @@ export default function EnergyProduction(): ReactElement {
                   key={location.name}
                   className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
                   href="#"
-                  onClick={() => setActiveLocation(location)}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setActiveLocation(location)
+                    setActiveSensor(
+                      SENSORS.filter((s) => s.location == location)[0]
+                    )
+                  }}
                 >
                   {location.name}
                 </a>
