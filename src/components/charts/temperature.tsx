@@ -6,7 +6,8 @@ import { useTheme } from '../../themeContext'
 
 interface TemperatureProps {
   categories: string[]
-  data: number[]
+  series: ApexAxisChartSeries
+  options?: ApexOptions
 }
 
 export default function Temperature(props: TemperatureProps): ReactElement {
@@ -35,7 +36,7 @@ export default function Temperature(props: TemperatureProps): ReactElement {
         enabled: false
       }
     },
-    colors: ['#0369A1'],
+    colors: ['#0369A1', '#BAE6FD'],
     stroke: {
       curve: 'straight',
       width: 2
@@ -48,19 +49,29 @@ export default function Temperature(props: TemperatureProps): ReactElement {
     },
     xaxis: {
       categories: props.categories,
-      tickAmount: 6
+      tickAmount: 9
     },
-    yaxis: {
-      labels: {
-        formatter: (value) => `${Math.round(value)}°C`
-      }
-    },
-    series: [
+    yaxis: [
       {
-        name: 'Temperature',
-        data: props.data
+        labels: {
+          formatter: (value) => `${Math.round(value)}°C`
+        },
+        title: {
+          text: 'Temperature'
+        }
+      },
+      {
+        opposite: true,
+        labels: {
+          formatter: (value) => `${Math.round(value)} mm`
+        },
+        title: {
+          text: 'Rain'
+        }
       }
-    ]
+    ],
+    series: props.series,
+    ...props.options
   })
 
   return <Chart options={options} series={options.series} height="200" />
