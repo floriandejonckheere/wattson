@@ -96,8 +96,8 @@ export default function BatteryStatus(): ReactElement {
             Total energy charged
           </h5>
           <p className="mt-1 text-3xl font-bold flex items-center dark:text-slate-300">
-            {Math.round(status.charged / 1000 ** 3)}&nbsp;
-            <span className="text-xl">MJ</span>
+            {Math.round(status.charged / 1000 ** 2 / 3600)}&nbsp;
+            <span className="text-xl">kWh</span>
           </p>
           <p className="text-xs text-gray-400 dark:text-slate-400">
             Since yesterday
@@ -108,8 +108,8 @@ export default function BatteryStatus(): ReactElement {
             Total energy discharged
           </h5>
           <p className="mt-1 text-3xl font-bold flex justify-end items-center dark:text-slate-300">
-            {Math.round(status.discharged / 1000 ** 3)}&nbsp;
-            <span className="text-xl">MJ</span>
+            {Math.round(status.charged / 1000 ** 2 / 3600)}&nbsp;
+            <span className="text-xl">kWh</span>
           </p>
           <p className="text-xs text-gray-400 dark:text-slate-400">
             Since yesterday
