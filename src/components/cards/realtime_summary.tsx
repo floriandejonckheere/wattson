@@ -1,6 +1,10 @@
 import { ReactElement } from 'react'
 
+import { useRealtimeSummary } from '../../api/queries/realtime_summary'
+
 export default function RealtimeSummary(): ReactElement {
+  const { isSuccess, summary } = useRealtimeSummary()
+
   return (
     <div className="flex flex-col gap-8 bg-white rounded-lg shadow p-7 dark:bg-slate-700 transition-all duration-500">
       <div>
@@ -46,7 +50,7 @@ export default function RealtimeSummary(): ReactElement {
             Predicted energy price
           </h5>
           <p className="mt-1 text-3xl font-bold flex items-center dark:text-slate-300">
-            15.71&nbsp;
+            {isSuccess && (summary.energyPrice / 10).toFixed(2)}&nbsp;
             <span className="text-xl">c&euro;/kWh</span>
             <span className="mx-2 px-1.5 py-1 rounded-sm text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300">
               &#9650; 8%
