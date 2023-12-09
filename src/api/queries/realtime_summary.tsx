@@ -16,21 +16,11 @@ export const useRealtimeSummary = () => {
   const { isSuccess, data } = useQueries({
     queries: [
       {
-        queryKey: ['measurements', 'pload', startTimeNow, endTimeNow],
+        queryKey: ['measurements', 'summary', startTimeNow, endTimeNow],
         queryFn: () =>
           measurements(
             'E_HUB',
-            ['pload_L1', 'pload_L2', 'pload_L3'],
-            startTimeNow,
-            endTimeNow
-          )
-      },
-      {
-        queryKey: ['measurements', 'ul', startTimeNow, endTimeNow],
-        queryFn: () =>
-          measurements(
-            'E_HUB',
-            ['ul_L1', 'ul_L2', 'ul_L3'],
+            ['pload_L1', 'pload_L2', 'pload_L3', 'ul_L1', 'ul_L2', 'ul_L3'],
             startTimeNow,
             endTimeNow
           )
