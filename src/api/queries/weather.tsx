@@ -65,7 +65,6 @@ export const useWeather = (
 
   const forecast: Forecast = {
     date,
-    forecast: 'sunny',
     temperature: {
       minimum: Math.min(...data[temperature].value.slice(0, 24)), // FIXME: API returns 48 values
       maximum: Math.max(...data[temperature].value.slice(0, 24)), // FIXME: API returns 48 values
