@@ -6,7 +6,7 @@ export default function Overview(): ReactElement {
     <>
       <h2 className="text-xl font-bold dark:text-slate-300">Overview</h2>
 
-      <div className="grid grid-cols-1 xl:grid-cols-2 mt-8 gap-16">
+      <div className="grid grid-cols-1 xl:grid-cols-2 mt-8 gap-8">
         {/* Real-Time summary */}
         <div className="flex flex-col gap-8 bg-white rounded-lg shadow p-7 dark:bg-slate-700 transition-all duration-500">
           <div>

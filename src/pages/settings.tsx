@@ -38,9 +38,9 @@ export default function Settings(): ReactElement {
 
   return (
     <>
-      <h2 className="text-xl font-bold dark:text-slate-300">Settings</h2>
+      <h2 className="text-xl font-bold dark:text-slate-300 mb-8">Settings</h2>
 
-      <div className="grid grid-cols-1 xl:grid-cols-2 mt-8 gap-16">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <div className="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
           <div className="mb-8">
             <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">
@@ -78,8 +78,50 @@ export default function Settings(): ReactElement {
             </label>
           </div>
         </div>
-      </div>
-      <div className="grid grid-cols-1 xl:grid-cols-2 mt-8 gap-16">
+
+        <div className="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
+          <div>
+            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">
+              Delete
+            </h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+              Delete your account
+            </p>
+            <p className="font-bold text-sm text-red-600 dark:text-red-400">
+              WARNING: This action will irreversibly delete your account and all
+              associated data!
+            </p>
+          </div>
+
+          {/* @ts-expect-error - mutation is not a real form handler */}
+          <form onSubmit={deleteAccountMutation.mutate}>
+            <div className="grid gap-y-4">
+              {deleteAccountMutation.isError && (
+                <p className="text-sm text-red-600 font-bold">
+                  Error:{' '}
+                  {axios.isAxiosError(deleteAccountMutation.error)
+                    ? deleteAccountMutation.error.response?.data.detail
+                    : deleteAccountMutation.error.message}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                className="w-full mt-4 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-red-700 text-white hover:bg-red-900 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 dark:bg-red-800 dark:text-white hover:dark:bg-red-900  "
+                disabled={
+                  deleteAccountMutation.isPending || isPending || isError
+                }
+              >
+                {deleteAccountMutation.isPending || isPending || isError ? (
+                  <Spinner color="text-white" />
+                ) : (
+                  'Delete account'
+                )}
+              </button>
+            </div>
+          </form>
+        </div>
+
         <div className="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
           <div className="mb-8">
             <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">
@@ -147,49 +189,6 @@ export default function Settings(): ReactElement {
                   <Spinner color="text-white" />
                 ) : (
                   'Update'
-                )}
-              </button>
-            </div>
-          </form>
-        </div>
-
-        <div className="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
-          <div>
-            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">
-              Delete
-            </h2>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-              Delete your account
-            </p>
-            <p className="font-bold text-sm text-red-600 dark:text-red-400">
-              WARNING: This action will irreversibly delete your account and all
-              associated data!
-            </p>
-          </div>
-
-          {/* @ts-expect-error - mutation is not a real form handler */}
-          <form onSubmit={deleteAccountMutation.mutate}>
-            <div className="grid gap-y-4">
-              {deleteAccountMutation.isError && (
-                <p className="text-sm text-red-600 font-bold">
-                  Error:{' '}
-                  {axios.isAxiosError(deleteAccountMutation.error)
-                    ? deleteAccountMutation.error.response?.data.detail
-                    : deleteAccountMutation.error.message}
-                </p>
-              )}
-
-              <button
-                type="submit"
-                className="w-full mt-4 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-red-700 text-white hover:bg-red-900 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 dark:bg-red-800 dark:text-white hover:dark:bg-red-900  "
-                disabled={
-                  deleteAccountMutation.isPending || isPending || isError
-                }
-              >
-                {deleteAccountMutation.isPending || isPending || isError ? (
-                  <Spinner color="text-white" />
-                ) : (
-                  'Delete account'
                 )}
               </button>
             </div>
