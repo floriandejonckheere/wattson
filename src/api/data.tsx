@@ -1,4 +1,4 @@
-import { Location, Sensor, Alert, Suggestion } from '../types'
+import { Location, Alert, Suggestion } from '../types'
 
 export const LOCATIONS: Location[] = [
   {
