@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios'
 
 export function measurements(
   device_name: string,
-  sensor: string,
+  sensor: string[],
   starttime: string,
   endtime: string
 ) {
@@ -25,6 +25,9 @@ export function measurements(
         'Content-Type': 'application/x-www-form-urlencoded',
         Accept: 'application/json',
         Authorization: `Bearer ${JSON.parse(token)}`
+      },
+      paramsSerializer: {
+        indexes: null
       }
     })
     .then((response) => {
