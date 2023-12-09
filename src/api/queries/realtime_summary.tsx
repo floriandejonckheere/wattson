@@ -66,7 +66,11 @@ export const useRealtimeSummary = () => {
       data.pload_L1.value[data.pload_L1.value.length - 1] +
       data.pload_L2.value[data.pload_L2.value.length - 1] +
       data.pload_L3.value[data.pload_L3.value.length - 1],
-    voltage: data.ul_L1.value[data.ul_L1.value.length - 1],
+    voltage: Math.avg([
+      data.ul_L1.value[data.ul_L1.value.length - 1],
+      data.ul_L2.value[data.ul_L2.value.length - 1],
+      data.ul_L3.value[data.ul_L3.value.length - 1]
+    ]),
     current: 0,
     energyPrice: Math.avg(data.Spot_price.value),
     energyCost: 0
