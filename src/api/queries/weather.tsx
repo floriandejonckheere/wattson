@@ -19,6 +19,7 @@ export const useWeather = (
   const cloudCover = `Cloud_Cover_${location.latitude},${location.longitude}`
   const windSpeed = `Wind_Speed_${location.latitude},${location.longitude}`
   const rain = `Rain_${location.latitude},${location.longitude}`
+  const snowfall = `Snowfall_${location.latitude},${location.longitude}`
 
   const { isSuccess, data } = useQueries({
     queries: [
@@ -40,6 +41,11 @@ export const useWeather = (
       {
         queryKey: ['predictions', rain, startTime, endTime],
         queryFn: () => predictions(rain, startTime, endTime),
+        enabled
+      },
+      {
+        queryKey: ['predictions', snowfall, startTime, endTime],
+        queryFn: () => predictions(snowfall, startTime, endTime),
         enabled
       }
     ],
@@ -69,6 +75,12 @@ export const useWeather = (
           average: 0,
           values: []
         },
+        snowfall: {
+          minimum: 0,
+          maximum: 0,
+          average: 0,
+          values: []
+        },
         cloudCover: 0,
         windSpeed: 0
       }
@@ -88,6 +100,12 @@ export const useWeather = (
       maximum: Math.max(...data[rain].value.slice(0, 24)), // FIXME: API returns 48 values
       average: Math.avg(data[rain].value.slice(0, 24)), // FIXME: API returns 48 values
       values: data[rain].value.slice(0, 24) // FIXME: API returns 48 values
+    },
+    snowfall: {
+      minimum: Math.min(...data[snowfall].value.slice(0, 24)), // FIXME: API returns 48 values
+      maximum: Math.max(...data[snowfall].value.slice(0, 24)), // FIXME: API returns 48 values
+      average: Math.avg(data[snowfall].value.slice(0, 24)), // FIXME: API returns 48 values
+      values: data[snowfall].value.slice(0, 24) // FIXME: API returns 48 values
     },
     cloudCover: Math.avg(data[cloudCover].value.slice(0, 24)), // FIXME: API returns 48 values
     windSpeed: Math.avg(data[windSpeed].value.slice(0, 24)) // FIXME: API returns 48 values

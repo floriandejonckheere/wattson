@@ -18,6 +18,12 @@ export interface Forecast {
     average: number
     values: number[]
   }
+  snowfall: {
+    minimum: number
+    maximum: number
+    average: number
+    values: number[]
+  }
   cloudCover: number
   windSpeed: number
 }

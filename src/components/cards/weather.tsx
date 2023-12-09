@@ -76,6 +76,11 @@ function WeatherDetail(props: {
             name: 'Rain',
             type: 'column',
             data: forecast.rain.values
+          },
+          {
+            name: 'Snowfall',
+            type: 'column',
+            data: forecast.snowfall.values
           }
         ]}
       />
