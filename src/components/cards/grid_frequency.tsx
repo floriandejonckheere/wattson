@@ -9,6 +9,8 @@ import MeasurementsChart from '../charts/measurements'
 
 import { useMeasurements } from '../../api/queries/measurements'
 
+import { LOCATIONS } from '../../api/data'
+
 function GridFrequencyDetail(props: {
   sensor: Sensor
   success: boolean
@@ -64,6 +66,7 @@ export default function GridFrequency(): ReactElement {
 
   const sensor: Sensor = {
     name: 'Grid frequency',
+    location: LOCATIONS[2],
     device: 'E_HUB',
     sensor: 'gridfreq'
   }
