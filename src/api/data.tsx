@@ -1,17 +1,17 @@
 import { Location, Sensor, Alert, Suggestion } from '../types'
 
-export const LOCATIONS: { ruissalo: Location; educity: Location } = {
-  ruissalo: {
+export const LOCATIONS: Location[] = [
+  {
     name: 'Ruissalo',
     latitude: 60.426116973904996,
     longitude: 22.159310892022628
   },
-  educity: {
+  {
     name: 'EduCity',
     latitude: 60.44751,
     longitude: 22.2982
   }
-}
+]
 
 export const SENSORS: Sensor[] = [
   {
