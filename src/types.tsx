@@ -69,3 +69,11 @@ export interface BatteryStatus {
   charged: number
   discharged: number
 }
+
+export interface RealtimeSummary {
+  totalPower: number
+  voltage: number
+  current: number
+  energyPrice: number
+  energyCost: number
+}
