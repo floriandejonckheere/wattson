@@ -11,9 +11,8 @@ export default function Suggestions(): ReactElement {
 
       <div className="grid grid-cols-1 xl:grid-cols-2 mt-6 gap-8">
         <EnergyAlerts />
-        <EnergySuggestions />
-        <div />
         <Weather />
+        <EnergySuggestions />
       </div>
     </>
   )
