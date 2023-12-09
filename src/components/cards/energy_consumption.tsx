@@ -36,6 +36,12 @@ export const SENSORS: Sensor[] = [
     location: LOCATIONS[2],
     device: 'Kauppa_SE_IEM3155',
     sensor: 'P_tot'
+  },
+  {
+    name: 'CG',
+    location: LOCATIONS[2],
+    device: 'CG_WM3690',
+    sensor: 'P_tot'
   }
 ]
 
