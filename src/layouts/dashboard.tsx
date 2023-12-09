@@ -53,7 +53,7 @@ export default function Dashboard(): ReactElement {
                   `w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-600 ${
                     isActive
                       ? 'bg-sky-900 dark:bg-sky-950'
-                      : 'hover:bg-sky-900 hover:text-white-300 dark:hover:bg-sky-950'
+                      : 'hover:bg-sky-950 hover:text-white-300'
                   }`
                 }
               >
@@ -68,8 +68,8 @@ export default function Dashboard(): ReactElement {
                 className={({ isActive }) =>
                   `w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-600 ${
                     isActive
-                      ? 'bg-sky-900'
-                      : 'hover:bg-sky-900 hover:text-white-300'
+                      ? 'bg-sky-900 dark:bg-sky-950'
+                      : 'hover:bg-sky-950 hover:text-white-300'
                   }`
                 }
               >
@@ -83,8 +83,8 @@ export default function Dashboard(): ReactElement {
                 className={({ isActive }) =>
                   `w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-600 ${
                     isActive
-                      ? 'bg-sky-900'
-                      : 'hover:bg-sky-900 hover:text-white-300'
+                      ? 'bg-sky-900 dark:bg-sky-950'
+                      : 'hover:bg-sky-950 hover:text-white-300'
                   }`
                 }
               >
@@ -99,8 +99,8 @@ export default function Dashboard(): ReactElement {
                   className={({ isActive }) =>
                     `w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-600 ${
                       isActive
-                        ? 'bg-sky-900'
-                        : 'hover:bg-sky-900 hover:text-white-300'
+                        ? 'bg-sky-900 dark:bg-sky-950'
+                        : 'hover:bg-sky-950 hover:text-white-300'
                     }`
                   }
                 >
@@ -115,8 +115,8 @@ export default function Dashboard(): ReactElement {
                 className={({ isActive }) =>
                   `w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-white rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-600 ${
                     isActive
-                      ? 'bg-sky-900'
-                      : 'hover:bg-sky-900 hover:text-white-300'
+                      ? 'bg-sky-900 dark:bg-sky-950'
+                      : 'hover:bg-sky-950 hover:text-white-300'
                   }`
                 }
               >
