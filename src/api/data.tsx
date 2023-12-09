@@ -10,27 +10,36 @@ export const LOCATIONS: Location[] = [
     name: 'EduCity',
     latitude: 60.44751,
     longitude: 22.2982
+  },
+  {
+    name: 'Tyyssija',
+    latitude: 0,
+    longitude: 0
   }
 ]
 
 export const SENSORS: Sensor[] = [
   {
-    name: 'Heat pump (Tyyssija)',
+    name: 'Heat pump',
+    location: LOCATIONS[2],
     device: 'Heatpump_SE_IEM3155',
     sensor: 'P_tot'
   },
   {
-    name: 'Ravintola (Tyyssija)',
+    name: 'Ravintola',
+    location: LOCATIONS[2],
     device: 'Ravintola_SE_IEM3155',
     sensor: 'P_tot'
   },
   {
-    name: 'Kuntosali (Tyyssija)',
+    name: 'Kuntosali',
+    location: LOCATIONS[2],
     device: 'Kuntosali_SE_IEM3155',
     sensor: 'P_tot'
   },
   {
-    name: 'Kauppa (Tyyssija)',
+    name: 'Kauppa',
+    location: LOCATIONS[2],
     device: 'Kauppa_SE_IEM3155',
     sensor: 'P_tot'
   }
