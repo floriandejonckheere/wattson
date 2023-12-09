@@ -25,6 +25,7 @@ export default function Temperature(props: TemperatureProps): ReactElement {
     chart: {
       id: 'temperature',
       type: 'line',
+      stacked: true,
       background: 'transparent',
       zoom: {
         enabled: false
@@ -36,7 +37,7 @@ export default function Temperature(props: TemperatureProps): ReactElement {
         enabled: false
       }
     },
-    colors: ['#0369A1', '#BAE6FD'],
+    colors: ['#0369A1', '#BAE6FD', '#F1F5F9'],
     stroke: {
       curve: 'straight',
       width: 2
@@ -67,6 +68,15 @@ export default function Temperature(props: TemperatureProps): ReactElement {
         },
         title: {
           text: 'Rain'
+        }
+      },
+      {
+        opposite: true,
+        labels: {
+          formatter: (value) => `${Math.round(value)} mm`
+        },
+        title: {
+          text: 'Snowfall'
         }
       }
     ],
