@@ -34,7 +34,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   }, [])
 
   // Apply the 'dark' class to the root element when dark mode is active
-  const rootClass = ` ${darkMode ? 'dark' : ''} h-screen w-screen`
+  const rootClass = `${darkMode ? 'dark' : ''} h-screen w-screen`
 
   return (
     <ThemeContext.Provider value={{ darkMode, toggleDarkMode }}>
