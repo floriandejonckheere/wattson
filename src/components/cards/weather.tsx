@@ -35,7 +35,11 @@ function WeatherDetail(props: {
       <div className="flex items-center justify-between">
         <div>
           <div className="flex gap-2 items-center">
-            <SunIcon className="inline-block w-6 h-6 dark:text-white" />
+            {forecast.cloudCover > 50 ? (
+              <CloudIcon className="inline-block w-6 h-6 dark:text-white" />
+            ) : (
+              <SunIcon className="inline-block w-6 h-6 dark:text-white" />
+            )}
 
             <div>
               <h5 className="text-sm text-gray-500 font-semibold dark:text-gray-300">
