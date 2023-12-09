@@ -14,32 +14,20 @@ import { useMeasurements } from '../../api/queries/measurements'
 
 export const SENSORS: Sensor[] = [
   {
-    name: 'Heat pump',
-    location: LOCATIONS[2],
-    device: 'Heatpump_SE_IEM3155',
-    sensor: 'P_tot'
+    name: 'Fronius Hybrid 4',
+    location: LOCATIONS[1],
+    device: 'Fronius_Hybrid_4',
+    sensor: 'P'
   },
   {
-    name: 'Ravintola',
-    location: LOCATIONS[2],
-    device: 'Ravintola_SE_IEM3155',
-    sensor: 'P_tot'
-  },
-  {
-    name: 'Kuntosali',
-    location: LOCATIONS[2],
-    device: 'Kuntosali_SE_IEM3155',
-    sensor: 'P_tot'
-  },
-  {
-    name: 'Kauppa',
-    location: LOCATIONS[2],
-    device: 'Kauppa_SE_IEM3155',
-    sensor: 'P_tot'
+    name: 'Fronius Symo 4.5-3-M',
+    location: LOCATIONS[1],
+    device: 'Fronius_Symo_4.5-3-M',
+    sensor: 'P'
   }
 ]
 
-function EnergyConsumptionDetail(props: {
+function EnergyProductionDetail(props: {
   sensor: Sensor
   success: boolean
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -74,8 +62,8 @@ function EnergyConsumptionDetail(props: {
   )
 }
 
-export default function EnergyConsumption(): ReactElement {
-  const [activeLocation, setActiveLocation] = useState(LOCATIONS[2])
+export default function EnergyProduction(): ReactElement {
+  const [activeLocation, setActiveLocation] = useState(LOCATIONS[1])
   const [activeSensor, setActiveSensor] = useState<Sensor>(SENSORS[0])
 
   const [startTime, setStartTime] = useState<Date>(
@@ -153,10 +141,10 @@ export default function EnergyConsumption(): ReactElement {
           </div>
         </div>
         <h3 className="text-xl font-bold text-gray-600 dark:text-gray-200 mb-2">
-          Energy consumption
+          Energy production
         </h3>
         <p className="text-sm text-gray-600 dark:text-gray-400">
-          Track the historical use of energy
+          Track the historical production of energy
         </p>
       </div>
 
@@ -165,8 +153,8 @@ export default function EnergyConsumption(): ReactElement {
         <input
           type="datetime-local"
           className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm focus:ring-0 focus:outline-none hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none"
-          id="energy-consumption-start-date-time"
-          name="energy-consumption-start-date-time"
+          id="energy-Production-start-date-time"
+          name="energy-Production-start-date-time"
           value={moment(startTime)
             .utcOffset(0, true)
             .format('YYYY-MM-DDTHH:mm:ss')}
@@ -179,8 +167,8 @@ export default function EnergyConsumption(): ReactElement {
         <input
           type="datetime-local"
           className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm focus:ring-0 focus:outline-none hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none"
-          id="energy-consumption-end-date-time"
-          name="energy-consumption-end-date-time"
+          id="energy-Production-end-date-time"
+          name="energy-Production-end-date-time"
           value={moment(endTime)
             .utcOffset(0, true)
             .format('YYYY-MM-DDTHH:mm:ss')}
@@ -188,7 +176,7 @@ export default function EnergyConsumption(): ReactElement {
         />
       </div>
 
-      <EnergyConsumptionDetail
+      <EnergyProductionDetail
         sensor={activeSensor}
         success={isSuccess}
         data={data}
