@@ -13,13 +13,28 @@ export const LOCATIONS: { ruissalo: Location; educity: Location } = {
   }
 }
 
-export const SENSORS: { heat_pump: Sensor } = {
-  heat_pump: {
-    name: 'Heat pump',
-    device: 'Tyyssija_Heat_Pump',
-    sensor: '131EE01Power'
+export const SENSORS: Sensor[] = [
+  {
+    name: 'Heat pump (Tyyssija)',
+    device: 'Heatpump_SE_IEM3155',
+    sensor: 'P_tot'
+  },
+  {
+    name: 'Ravintola (Tyyssija)',
+    device: 'Ravintola_SE_IEM3155',
+    sensor: 'P_tot'
+  },
+  {
+    name: 'Kuntosali (Tyyssija)',
+    device: 'Kuntosali_SE_IEM3155',
+    sensor: 'P_tot'
+  },
+  {
+    name: 'Kauppa (Tyyssija)',
+    device: 'Kauppa_SE_IEM3155',
+    sensor: 'P_tot'
   }
-}
+]
 
 export const ALERTS: Alert[] = [
   {
