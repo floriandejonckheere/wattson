@@ -66,7 +66,18 @@ function WeatherDetail(props: {
         categories={new Array(24)
           .fill('')
           .map((_, i) => `${i}:00`.padStart(5, '0'))}
-        data={forecast.temperature.values}
+        series={[
+          {
+            name: 'Temperature',
+            type: 'line',
+            data: forecast.temperature.values
+          },
+          {
+            name: 'Rain',
+            type: 'column',
+            data: forecast.rain.values
+          }
+        ]}
       />
     </>
   )

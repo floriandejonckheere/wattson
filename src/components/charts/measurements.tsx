@@ -4,7 +4,7 @@ import { ApexOptions } from 'apexcharts'
 
 interface MeasurementProps {
   categories: string[]
-  series: { name: string; data: number[] }[]
+  series: ApexAxisChartSeries
   unit: string
   options?: ApexOptions
 }
