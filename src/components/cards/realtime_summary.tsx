@@ -21,7 +21,7 @@ export default function RealtimeSummary(): ReactElement {
           Total power
         </h4>
         <p className="mt-2 text-center text-5xl text-sky-700 font-bold dark:text-gray-200">
-          2000 W
+          {isSuccess && Math.round(summary.totalPower)} W
         </p>
       </div>
 
