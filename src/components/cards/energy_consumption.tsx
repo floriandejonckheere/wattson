@@ -41,19 +41,10 @@ export const SENSORS: Sensor[] = [
 
 function EnergyConsumptionDetail(props: {
   sensor: Sensor
-  success: boolean
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any
 }): ReactElement {
-  const { sensor, success, data } = props
-
-  if (!success) {
-    return (
-      <div className="flex justify-center items-center h-48">
-        <Spinner size="8" />
-      </div>
-    )
-  }
+  const { sensor, data } = props
 
   const measurement: Measurement = data[sensor.sensor]
 
@@ -194,11 +185,13 @@ export default function EnergyConsumption(): ReactElement {
         />
       </div>
 
-      <EnergyConsumptionDetail
-        sensor={activeSensor}
-        success={isSuccess}
-        data={data}
-      />
+      {!isSuccess ? (
+        <div className="flex justify-center items-center h-48">
+          <Spinner size="8" />
+        </div>
+      ) : (
+        <EnergyConsumptionDetail sensor={activeSensor} data={data} />
+      )}
     </div>
   )
 }
