@@ -45,10 +45,6 @@ const Circle = ({ value }: { value: number }): ReactElement => (
 export default function BatteryStatus(): ReactElement {
   const { isSuccess, status } = useBatteryStatus()
 
-  if (!isSuccess) {
-    return <Spinner />
-  }
-
   return (
     <div className="flex flex-col gap-8 bg-white rounded-lg shadow p-7 dark:bg-slate-700 transition-all duration-500">
       <div>
@@ -65,7 +61,7 @@ export default function BatteryStatus(): ReactElement {
           Charging status
         </h4>
         <p className="flex justify-center mt-2 text-5xl text-sky-700 font-bold dark:text-gray-200">
-          <Circle value={status.charge} />
+          {isSuccess ? <Circle value={status.charge} /> : <Spinner />}
         </p>
       </div>
 
@@ -75,7 +71,7 @@ export default function BatteryStatus(): ReactElement {
             Battery capacity
           </h5>
           <p className="mt-1 text-3xl font-bold flex items-center dark:text-slate-300">
-            {(status.capacity / 1000).toFixed(1)}&nbsp;
+            {isSuccess ? (status.capacity / 1000).toFixed(1) : '--'}&nbsp;
             <span className="text-xl">kWh</span>
           </p>
         </div>
@@ -84,7 +80,7 @@ export default function BatteryStatus(): ReactElement {
             Battery health
           </h5>
           <p className="mt-1 text-3xl font-bold flex justify-end items-center dark:text-slate-300">
-            {status.health}&nbsp;
+            {isSuccess ? status.health : '--'}&nbsp;
             <span className="text-xl">%</span>
           </p>
         </div>
@@ -96,7 +92,8 @@ export default function BatteryStatus(): ReactElement {
             Total energy charged
           </h5>
           <p className="mt-1 text-3xl font-bold flex items-center dark:text-slate-300">
-            {Math.round(status.charged / 1000 ** 2 / 3600)}&nbsp;
+            {isSuccess ? Math.round(status.charged / 1000 ** 2 / 3600) : '--'}
+            &nbsp;
             <span className="text-xl">kWh</span>
           </p>
           <p className="text-xs text-gray-400 dark:text-slate-400">
@@ -108,7 +105,8 @@ export default function BatteryStatus(): ReactElement {
             Total energy discharged
           </h5>
           <p className="mt-1 text-3xl font-bold flex justify-end items-center dark:text-slate-300">
-            {Math.round(status.charged / 1000 ** 2 / 3600)}&nbsp;
+            {isSuccess ? Math.round(status.charged / 1000 ** 2 / 3600) : '--'}
+            &nbsp;
             <span className="text-xl">kWh</span>
           </p>
           <p className="text-xs text-gray-400 dark:text-slate-400">

@@ -21,7 +21,7 @@ export default function RealtimeSummary(): ReactElement {
           Total power
         </h4>
         <p className="mt-2 text-center text-5xl text-sky-700 font-bold dark:text-gray-200">
-          {isSuccess && Math.round(summary.totalPower)} W
+          {isSuccess ? Math.round(summary.totalPower) : '--'} W
         </p>
       </div>
 
@@ -31,7 +31,7 @@ export default function RealtimeSummary(): ReactElement {
             Voltage
           </h5>
           <p className="mt-1 text-3xl font-bold dark:text-slate-300">
-            {isSuccess && summary.voltage.toFixed(1)}{' '}
+            {isSuccess ? summary.voltage.toFixed(1) : '--'}{' '}
             <span className="text-xl">V</span>
           </p>
         </div>
@@ -40,7 +40,7 @@ export default function RealtimeSummary(): ReactElement {
             Current
           </h5>
           <p className="mt-1 text-3xl font-bold dark:text-slate-300">
-            {isSuccess && summary.current.toFixed(1)}{' '}
+            {isSuccess ? summary.current.toFixed(1) : '--'}{' '}
             <span className="text-xl">A</span>
           </p>
         </div>
@@ -52,7 +52,7 @@ export default function RealtimeSummary(): ReactElement {
             Predicted energy price
           </h5>
           <p className="mt-1 text-3xl font-bold flex items-center dark:text-slate-300">
-            {isSuccess && (summary.energyPrice / 10).toFixed(2)}&nbsp;
+            {isSuccess ? (summary.energyPrice / 10).toFixed(2) : '--'}&nbsp;
             <span className="text-xl">c&euro;/kWh</span>
             <span className="mx-2 px-1.5 py-1 rounded-sm text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300">
               &#9650; 8%
@@ -65,7 +65,7 @@ export default function RealtimeSummary(): ReactElement {
             Predicted energy cost
           </h5>
           <p className="mt-1 text-3xl font-bold flex justify-end items-center dark:text-slate-300">
-            {isSuccess && (summary.energyCost / 100).toFixed(2)}&nbsp;
+            {isSuccess ? (summary.energyCost / 100).toFixed(2) : '--'}&nbsp;
             <span className="text-xl">c&euro;/h</span>
             <span className="mx-2 px-1.5 py-1 rounded-sm text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
               &#9660; 75%
