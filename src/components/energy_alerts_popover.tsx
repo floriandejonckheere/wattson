@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import { ReactElement, useState } from 'react'
 
 import {
   BellIcon,
@@ -12,12 +12,14 @@ import { BoltIcon, Cog6ToothIcon } from '@heroicons/react/24/solid'
 import { ALERTS } from '../api/data'
 
 export default function EnergyAlertsPopover(): ReactElement {
+  const [open, setOpen] = useState(false)
+
   return (
-    <div className="hs-dropdown relative inline-flex">
+    <div className="relative inline-flex">
       <button
-        id="hs-dropdown-default"
         type="button"
-        className="relative hs-dropdown-toggle py-4 px-3 inline-flex items-center gap-x-2 text-sm rounded-lg font-medium text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+        className="relative py-4 px-3 inline-flex items-center gap-x-2 text-sm rounded-lg font-medium text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+        onClick={() => setOpen(!open)}
       >
         <BellIcon className="w-5 h-5" />
         {ALERTS.some((alert) => alert.unread) && (
@@ -26,8 +28,15 @@ export default function EnergyAlertsPopover(): ReactElement {
       </button>
 
       <div
-        className="hs-dropdown-menu relative flex flex-col transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full z-50"
-        aria-labelledby="hs-dropdown-default"
+        className={`fixed left-0 top-0 w-full h-full bg-gray-100 z-40 opacity-0 ${
+          open ? 'block' : 'hidden'
+        }`}
+        onClick={() => setOpen(false)}
+      />
+      <div
+        className={`fixed top-24 flex flex-col transition-[opacity,margin] duration min-w-[15rem] bg-white shadow-md rounded-lg mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full z-50 ${
+          open ? 'opacity-100 visible' : 'opacity-0 hidden'
+        }`}
       >
         <div className="absolute -top-4 left-2 w-0 h-0 border-l-[20px] border-l-transparent border-b-[30px] border-b-sky-700 dark:border-b-sky-800 border-r-[20px] border-r-transparent"></div>
         <div className="flex gap-3 items-center px-6 py-4 text-white bg-sky-700 rounded-t-lg dark:bg-sky-800">
