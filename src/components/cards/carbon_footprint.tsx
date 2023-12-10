@@ -9,16 +9,16 @@ export default function CarbonFootprint(): ReactElement {
         <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">
           Carbon Footprint
         </h2>
-        <div
-          className="relative"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          <button className="bg-sky-700 text-gray-800 px-4 py-2 rounded">
+        <div className="relative">
+          <button
+            className="my-4 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-sky-700 text-white hover:bg-sky-900 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
             More info
           </button>
           {isHovered && (
-            <div className="absolute bg-sky-700 text-gray-800 p-4 rounded shadow-md mt-2 dark:bg-white transition-all duration-500">
+            <div className="absolute p-4 rounded-lg shadow-md transition-all duration-500 text-sm bg-gray-900 text-white">
               <p>
                 A carbon footprint is a measurement of the various greenhouse
                 gases, such as carbon dioxide (CO2), methane (CH4), nitrous
