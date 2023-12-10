@@ -1,4 +1,5 @@
 import { ReactElement, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import {
   BellIcon,
@@ -14,6 +15,8 @@ import { useAlerts } from '../contexts/alert'
 export default function EnergyAlertsPopover(): ReactElement {
   const [open, setOpen] = useState(false)
   const [settings, setSettings] = useState(false)
+
+  const navigate = useNavigate()
 
   const { alerts, markAsRead } = useAlerts()
 
@@ -92,6 +95,13 @@ export default function EnergyAlertsPopover(): ReactElement {
             <a
               key={alert.id}
               href="#"
+              onClick={(e) => {
+                e.preventDefault()
+                setOpen(false)
+                setSettings(false)
+                markAsRead(alert)
+                navigate('/suggestions')
+              }}
               className={`flex flex-col transition-all last:rounded-b-lg ${
                 alert.unread
                   ? 'bg-sky-50 hover:bg-sky-100 dark:bg-slate-600 dark:hover:bg-slate-500'
