@@ -2,7 +2,7 @@ import { ReactElement, useState, useEffect } from 'react'
 import Chart from 'react-apexcharts'
 import apexchart, { ApexOptions } from 'apexcharts'
 
-import { useTheme } from '../../themeContext'
+import { useTheme } from '../../contexts/theme'
 
 interface TemperatureProps {
   categories: string[]
