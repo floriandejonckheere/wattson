@@ -17,7 +17,7 @@ import './main.css'
 
 import App from './app'
 
-import { ThemeProvider } from './themeContext'
+import { ThemeProvider } from './contexts/theme'
 
 const queryClient = new QueryClient({
   defaultOptions: {
