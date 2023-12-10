@@ -5,7 +5,7 @@ import Spinner from '../spinner'
 import { useBatteryStatus } from '../../api/queries/battery_status'
 
 const Circle = ({ value }: { value: number }): ReactElement => (
-  <div className="relative h-40 w-40">
+  <span className="relative h-40 w-40">
     <svg
       className="h-full w-full"
       width="36"
@@ -34,12 +34,12 @@ const Circle = ({ value }: { value: number }): ReactElement => (
         />
       </g>
     </svg>
-    <div className="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2 -mt-2">
+    <span className="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2 -mt-2">
       <span className="text-center text-2xl font-bold text-gray-800 dark:text-gray-200">
         {value}%
       </span>
-    </div>
-  </div>
+    </span>
+  </span>
 )
 
 export default function BatteryStatus(): ReactElement {
