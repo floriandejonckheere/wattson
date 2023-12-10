@@ -92,16 +92,8 @@ export default function EnergyAlertsPopover(): ReactElement {
           </div>
         ) : (
           alerts.map((alert) => (
-            <a
+            <div
               key={alert.id}
-              href="#"
-              onClick={(e) => {
-                e.preventDefault()
-                setOpen(false)
-                setSettings(false)
-                markAsRead(alert)
-                navigate('/suggestions')
-              }}
               className={`flex flex-col transition-all last:rounded-b-lg ${
                 alert.unread
                   ? 'bg-sky-50 hover:bg-sky-100 dark:bg-slate-600 dark:hover:bg-slate-500'
@@ -115,26 +107,37 @@ export default function EnergyAlertsPopover(): ReactElement {
               }`}
             >
               <div className="flex items-center justify-between p-4 md:p-5">
-                <span className="flex items-center me-5">
-                  {(alert.type === 'info' && (
-                    <InformationCircleIcon className="w-10 h-10 dark:text-gray-200" />
-                  )) ||
-                    (alert.type === 'warning' && (
-                      <ShieldExclamationIcon className="w-10 h-10 dark:text-gray-200" />
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setOpen(false)
+                    setSettings(false)
+                    markAsRead(alert)
+                    navigate('/suggestions')
+                  }}
+                >
+                  <span className="flex items-center me-5">
+                    {(alert.type === 'info' && (
+                      <InformationCircleIcon className="w-10 h-10 dark:text-gray-200" />
                     )) ||
-                    (alert.type === 'error' && (
-                      <ExclamationTriangleIcon className="w-10 h-10 dark:text-gray-200" />
-                    ))}
+                      (alert.type === 'warning' && (
+                        <ShieldExclamationIcon className="w-10 h-10 dark:text-gray-200" />
+                      )) ||
+                      (alert.type === 'error' && (
+                        <ExclamationTriangleIcon className="w-10 h-10 dark:text-gray-200" />
+                      ))}
 
-                  <span className="ms-5">
-                    <span className="block font-medium text-gray-800 dark:text-gray-200">
-                      {alert.title}
-                    </span>
-                    <span className="block text-sm text-gray-500 dark:text-gray-400">
-                      {alert.message}
+                    <span className="ms-5">
+                      <span className="block font-medium text-gray-800 dark:text-gray-200">
+                        {alert.title}
+                      </span>
+                      <span className="block text-sm text-gray-500 dark:text-gray-400">
+                        {alert.message}
+                      </span>
                     </span>
                   </span>
-                </span>
+                </a>
                 {alert.unread && (
                   <a
                     href="#"
@@ -155,7 +158,7 @@ export default function EnergyAlertsPopover(): ReactElement {
                   </a>
                 )}
               </div>
-            </a>
+            </div>
           ))
         )}
       </div>
