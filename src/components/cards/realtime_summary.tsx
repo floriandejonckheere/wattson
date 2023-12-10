@@ -54,9 +54,6 @@ export default function RealtimeSummary(): ReactElement {
           <p className="mt-1 text-3xl font-bold flex items-center dark:text-slate-300">
             {isSuccess ? (summary.energyPrice / 10).toFixed(2) : '--'}&nbsp;
             <span className="text-xl">c&euro;/kWh</span>
-            <span className="mx-2 px-1.5 py-1 rounded-sm text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300">
-              &#9650; 8%
-            </span>
           </p>
           <p className="text-xs text-gray-400 dark:text-slate-400">Today</p>
         </div>
@@ -67,9 +64,6 @@ export default function RealtimeSummary(): ReactElement {
           <p className="mt-1 text-3xl font-bold flex justify-end items-center dark:text-slate-300">
             {isSuccess ? (summary.energyCost / 100).toFixed(2) : '--'}&nbsp;
             <span className="text-xl">c&euro;/h</span>
-            <span className="mx-2 px-1.5 py-1 rounded-sm text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
-              &#9660; 75%
-            </span>
           </p>
           <p className="text-xs text-gray-400 dark:text-slate-400">Today</p>
         </div>
