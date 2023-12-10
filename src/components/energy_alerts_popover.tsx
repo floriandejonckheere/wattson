@@ -9,11 +9,13 @@ import {
 
 import { BoltIcon, Cog6ToothIcon } from '@heroicons/react/24/solid'
 
-import { ALERTS } from '../api/data'
+import { useAlerts } from '../contexts/alert'
 
 export default function EnergyAlertsPopover(): ReactElement {
   const [open, setOpen] = useState(false)
   const [settings, setSettings] = useState(false)
+
+  const { alerts, markAsRead } = useAlerts()
 
   return (
     <div className="relative inline-flex">
@@ -26,7 +28,7 @@ export default function EnergyAlertsPopover(): ReactElement {
         }}
       >
         <BellIcon className="w-5 h-5" />
-        {ALERTS.some((alert) => alert.unread) && (
+        {alerts.some((alert) => alert.unread) && (
           <div className="absolute right-1.5 bottom-1.5 w-2 h-2 rounded-full bg-red-700 dark:bg-white"></div>
         )}
       </button>
@@ -86,7 +88,7 @@ export default function EnergyAlertsPopover(): ReactElement {
             </div>
           </div>
         ) : (
-          ALERTS.map((alert) => (
+          alerts.map((alert) => (
             <a
               key={alert.id}
               href="#"
@@ -128,6 +130,10 @@ export default function EnergyAlertsPopover(): ReactElement {
                     href="#"
                     className="hs-tooltip hs-tooltip-toggle p-4"
                     title="Mark as read"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      markAsRead(alert)
+                    }}
                   >
                     <div className="w-2 h-2 rounded-full bg-sky-700 dark:bg-white"></div>
                     <span

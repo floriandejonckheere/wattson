@@ -2,21 +2,24 @@ import { ReactElement } from 'react'
 
 import { BoltIcon } from '@heroicons/react/24/solid'
 
-import { ALERTS } from '../../api/data'
 import {
   ExclamationTriangleIcon,
   InformationCircleIcon,
   ShieldExclamationIcon
 } from '@heroicons/react/24/outline'
 
+import { useAlerts } from '../../contexts/alert'
+
 export default function EnergyAlerts(): ReactElement {
+  const { alerts, markAsRead } = useAlerts()
+
   return (
     <div className="flex flex-col gap-4 bg-white rounded-lg shadow p-7 dark:bg-slate-700">
       <h3 className="flex gap-3 items-center text-xl font-bold text-gray-600 dark:text-gray-200 mb-6">
         <BoltIcon className="w-5 h-5 text-yellow-400" />
         Energy alerts
       </h3>
-      {ALERTS.map((alert) => (
+      {alerts.map((alert) => (
         <div
           key={alert.id}
           className={`flex flex-col transition-all rounded-lg ${
@@ -57,6 +60,10 @@ export default function EnergyAlerts(): ReactElement {
                 href="#"
                 className="hs-tooltip hs-tooltip-toggle p-4 float-right ml-auto"
                 title="Mark as read"
+                onClick={(e) => {
+                  e.preventDefault()
+                  markAsRead(alert)
+                }}
               >
                 <div className="w-2 h-2 rounded-full bg-sky-700 dark:bg-white"></div>
                 <span

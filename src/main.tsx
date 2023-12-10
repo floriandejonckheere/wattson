@@ -18,6 +18,7 @@ import './main.css'
 import App from './app'
 
 import { ThemeProvider } from './contexts/theme'
+import { AlertProvider } from './contexts/alert'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -42,11 +43,13 @@ const Main = () => {
   return (
     <React.StrictMode>
       <ThemeProvider>
-        <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </QueryClientProvider>
+        <AlertProvider>
+          <QueryClientProvider client={queryClient}>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </QueryClientProvider>
+        </AlertProvider>
       </ThemeProvider>
     </React.StrictMode>
   )
