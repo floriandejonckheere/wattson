@@ -6,6 +6,17 @@ Wattson is a smart energy assistant for the RESPONSE2020 High-Level Energy Manag
 
 Navigate to [https://wattson.dejonckhee.re](https://wattson.dejonckhee.re) to access the application.
 
+![Screenshot](https://github.com/floriandejonckheere/wattson/raw/master/2-overview.png)
+
+<a href="https://github.com/floriandejonckheere/wattson/raw/master/4-history.png"><img src="https://github.com/floriandejonckheere/wattson/raw/master/4-history.png" width="49%" height="auto"></a>
+<a href="https://github.com/floriandejonckheere/wattson/raw/master/6-suggestions.png"><img src="https://github.com/floriandejonckheere/wattson/raw/master/6-suggestions.png" width="49%" height="auto"></a>
+
+<a href="https://github.com/floriandejonckheere/wattson/raw/master/1-signup.png"><img src="https://github.com/floriandejonckheere/wattson/raw/master/1-signup.png" width="49%" height="auto"></a>
+<a href="https://github.com/floriandejonckheere/wattson/raw/master/7-alerts.png"><img src="https://github.com/floriandejonckheere/wattson/raw/master/7-alerts.png" width="49%" height="auto"></a>
+
+<a href="https://github.com/floriandejonckheere/wattson/raw/master/2-overview-dark.png"><img src="https://github.com/floriandejonckheere/wattson/raw/master/2-overview-dark.png" width="49%" height="auto"></a>
+<a href="https://github.com/floriandejonckheere/wattson/raw/master/8-settings.png"><img src="https://github.com/floriandejonckheere/wattson/raw/master/8-settings.png" width="49%" height="auto"></a>
+
 ## Installation
 
 Please ensure you have a working [Node.js](https://nodejs.org/en/) environment.
